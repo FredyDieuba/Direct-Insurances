@@ -9,8 +9,74 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SinistresRouteImport } from './routes/sinistres'
+import { Route as MonEspaceRouteImport } from './routes/mon-espace'
+import { Route as DevisRouteImport } from './routes/devis'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AssuranceVoyageRouteImport } from './routes/assurance-voyage'
+import { Route as AssuranceVieRouteImport } from './routes/assurance-vie'
+import { Route as AssuranceSanteRouteImport } from './routes/assurance-sante'
+import { Route as AssuranceHabitationRouteImport } from './routes/assurance-habitation'
+import { Route as AssuranceAutoRouteImport } from './routes/assurance-auto'
+import { Route as AgencesRouteImport } from './routes/agences'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SinistresRoute = SinistresRouteImport.update({
+  id: '/sinistres',
+  path: '/sinistres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonEspaceRoute = MonEspaceRouteImport.update({
+  id: '/mon-espace',
+  path: '/mon-espace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevisRoute = DevisRouteImport.update({
+  id: '/devis',
+  path: '/devis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssuranceVoyageRoute = AssuranceVoyageRouteImport.update({
+  id: '/assurance-voyage',
+  path: '/assurance-voyage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssuranceVieRoute = AssuranceVieRouteImport.update({
+  id: '/assurance-vie',
+  path: '/assurance-vie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssuranceSanteRoute = AssuranceSanteRouteImport.update({
+  id: '/assurance-sante',
+  path: '/assurance-sante',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssuranceHabitationRoute = AssuranceHabitationRouteImport.update({
+  id: '/assurance-habitation',
+  path: '/assurance-habitation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssuranceAutoRoute = AssuranceAutoRouteImport.update({
+  id: '/assurance-auto',
+  path: '/assurance-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgencesRoute = AgencesRouteImport.update({
+  id: '/agences',
+  path: '/agences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +85,186 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/agences': typeof AgencesRoute
+  '/assurance-auto': typeof AssuranceAutoRoute
+  '/assurance-habitation': typeof AssuranceHabitationRoute
+  '/assurance-sante': typeof AssuranceSanteRoute
+  '/assurance-vie': typeof AssuranceVieRoute
+  '/assurance-voyage': typeof AssuranceVoyageRoute
+  '/contact': typeof ContactRoute
+  '/devis': typeof DevisRoute
+  '/mon-espace': typeof MonEspaceRoute
+  '/sinistres': typeof SinistresRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/agences': typeof AgencesRoute
+  '/assurance-auto': typeof AssuranceAutoRoute
+  '/assurance-habitation': typeof AssuranceHabitationRoute
+  '/assurance-sante': typeof AssuranceSanteRoute
+  '/assurance-vie': typeof AssuranceVieRoute
+  '/assurance-voyage': typeof AssuranceVoyageRoute
+  '/contact': typeof ContactRoute
+  '/devis': typeof DevisRoute
+  '/mon-espace': typeof MonEspaceRoute
+  '/sinistres': typeof SinistresRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/agences': typeof AgencesRoute
+  '/assurance-auto': typeof AssuranceAutoRoute
+  '/assurance-habitation': typeof AssuranceHabitationRoute
+  '/assurance-sante': typeof AssuranceSanteRoute
+  '/assurance-vie': typeof AssuranceVieRoute
+  '/assurance-voyage': typeof AssuranceVoyageRoute
+  '/contact': typeof ContactRoute
+  '/devis': typeof DevisRoute
+  '/mon-espace': typeof MonEspaceRoute
+  '/sinistres': typeof SinistresRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/agences'
+    | '/assurance-auto'
+    | '/assurance-habitation'
+    | '/assurance-sante'
+    | '/assurance-vie'
+    | '/assurance-voyage'
+    | '/contact'
+    | '/devis'
+    | '/mon-espace'
+    | '/sinistres'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/agences'
+    | '/assurance-auto'
+    | '/assurance-habitation'
+    | '/assurance-sante'
+    | '/assurance-vie'
+    | '/assurance-voyage'
+    | '/contact'
+    | '/devis'
+    | '/mon-espace'
+    | '/sinistres'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/agences'
+    | '/assurance-auto'
+    | '/assurance-habitation'
+    | '/assurance-sante'
+    | '/assurance-vie'
+    | '/assurance-voyage'
+    | '/contact'
+    | '/devis'
+    | '/mon-espace'
+    | '/sinistres'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  AgencesRoute: typeof AgencesRoute
+  AssuranceAutoRoute: typeof AssuranceAutoRoute
+  AssuranceHabitationRoute: typeof AssuranceHabitationRoute
+  AssuranceSanteRoute: typeof AssuranceSanteRoute
+  AssuranceVieRoute: typeof AssuranceVieRoute
+  AssuranceVoyageRoute: typeof AssuranceVoyageRoute
+  ContactRoute: typeof ContactRoute
+  DevisRoute: typeof DevisRoute
+  MonEspaceRoute: typeof MonEspaceRoute
+  SinistresRoute: typeof SinistresRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sinistres': {
+      id: '/sinistres'
+      path: '/sinistres'
+      fullPath: '/sinistres'
+      preLoaderRoute: typeof SinistresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mon-espace': {
+      id: '/mon-espace'
+      path: '/mon-espace'
+      fullPath: '/mon-espace'
+      preLoaderRoute: typeof MonEspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devis': {
+      id: '/devis'
+      path: '/devis'
+      fullPath: '/devis'
+      preLoaderRoute: typeof DevisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assurance-voyage': {
+      id: '/assurance-voyage'
+      path: '/assurance-voyage'
+      fullPath: '/assurance-voyage'
+      preLoaderRoute: typeof AssuranceVoyageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assurance-vie': {
+      id: '/assurance-vie'
+      path: '/assurance-vie'
+      fullPath: '/assurance-vie'
+      preLoaderRoute: typeof AssuranceVieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assurance-sante': {
+      id: '/assurance-sante'
+      path: '/assurance-sante'
+      fullPath: '/assurance-sante'
+      preLoaderRoute: typeof AssuranceSanteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assurance-habitation': {
+      id: '/assurance-habitation'
+      path: '/assurance-habitation'
+      fullPath: '/assurance-habitation'
+      preLoaderRoute: typeof AssuranceHabitationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assurance-auto': {
+      id: '/assurance-auto'
+      path: '/assurance-auto'
+      fullPath: '/assurance-auto'
+      preLoaderRoute: typeof AssuranceAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agences': {
+      id: '/agences'
+      path: '/agences'
+      fullPath: '/agences'
+      preLoaderRoute: typeof AgencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +277,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  AgencesRoute: AgencesRoute,
+  AssuranceAutoRoute: AssuranceAutoRoute,
+  AssuranceHabitationRoute: AssuranceHabitationRoute,
+  AssuranceSanteRoute: AssuranceSanteRoute,
+  AssuranceVieRoute: AssuranceVieRoute,
+  AssuranceVoyageRoute: AssuranceVoyageRoute,
+  ContactRoute: ContactRoute,
+  DevisRoute: DevisRoute,
+  MonEspaceRoute: MonEspaceRoute,
+  SinistresRoute: SinistresRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
