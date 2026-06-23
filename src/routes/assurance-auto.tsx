@@ -27,7 +27,7 @@ function OCRDemo() {
             <div className="flex-1 p-5 flex flex-col gap-3">
               <div className="relative aspect-[1.6] rounded-xl bg-gradient-to-br from-gold/30 to-navy/10 border-2 border-dashed border-gold/40 overflow-hidden">
                 <motion.div
-                  className="absolute inset-x-0 h-1 bg-gold shadow-[0_0_20px_rgba(232,160,32,0.8)]"
+                  className="absolute inset-x-0 h-1 bg-gold shadow-[0_0_20px_rgba(45,127,249,0.8)]"
                   animate={{ top: ["0%", "100%", "0%"] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 />
@@ -58,7 +58,7 @@ function OCRDemo() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2.5 }}
-                className="bg-gold-gradient text-navy text-xs font-bold py-3 rounded-lg flex items-center justify-center gap-1"
+                className="bg-gold-gradient text-white text-xs font-bold py-3 rounded-lg flex items-center justify-center gap-1"
               >
                 <Check className="h-3 w-3" /> Champs remplis automatiquement
               </motion.button>

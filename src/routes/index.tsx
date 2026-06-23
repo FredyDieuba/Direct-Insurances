@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import {
   Play, ArrowRight, Smartphone, CreditCard, FileCheck, ShieldCheck,
-  Car, Plane, Home as HomeIcon, HeartPulse, Sparkles, Star, X,
-  Award, Users, Building2, Clock,
+  Users, HeartPulse, Briefcase, Sparkles, Star, X,
+  Award, Building2, Clock, ScanLine, Check, Zap,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Counter } from "@/components/site/Counter";
@@ -12,21 +12,20 @@ import { Counter } from "@/components/site/Counter";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DIRECT INSURANCE — Votre assurance en 5 minutes, 100% en ligne" },
-      { name: "description", content: "Assurances Auto, Voyage, Habitation, Santé et Vie au Cameroun. Souscription en ligne, paiement Mobile Money, attestation immédiate." },
-      { property: "og:title", content: "DIRECT INSURANCE — InsurTech Cameroun" },
-      { property: "og:description", content: "Votre assurance en 5 minutes, 100% en ligne. Régie par le Code CIMA depuis 1996." },
+      { title: "DIRECT INSURANCE — Leader de l'assurance digitale au Cameroun" },
+      { name: "description", content: "Assurance de personnes, maladie, IARDT et gestion des risques. Souscription 100% en ligne, paiement Mobile Money, attestation immédiate. Agréée CIMA depuis 1996." },
+      { property: "og:title", content: "DIRECT INSURANCE — Leader InsurTech Cameroun" },
+      { property: "og:description", content: "L'assurance nouvelle génération, simple, rapide et accessible partout au Cameroun." },
     ],
   }),
   component: HomePage,
 });
 
-const products = [
-  { to: "/assurance-auto", icon: Car, title: "Auto", desc: "Tous risques, tiers, scan carte grise OCR." },
-  { to: "/assurance-voyage", icon: Plane, title: "Voyage", desc: "Schengen, monde entier, urgences 24/7." },
-  { to: "/assurance-habitation", icon: HomeIcon, title: "Habitation", desc: "Incendie, vol, dégâts des eaux." },
-  { to: "/assurance-sante", icon: HeartPulse, title: "Santé", desc: "Dentaire, hospitalisation, maternité." },
-  { to: "/assurance-vie", icon: Sparkles, title: "Vie", desc: "Retraite, rente éducation, décès." },
+const solutions = [
+  { to: "/solutions/assurance-personnes", icon: Users, title: "Assurance de Personnes", desc: "Vie, décès, épargne, retraite et accidents individuels.", tag: "Famille & avenir" },
+  { to: "/solutions/assurance-maladie", icon: HeartPulse, title: "Assurance Maladie", desc: "Santé individuelle, famille, entreprise. Réseau 250+.", tag: "Santé" },
+  { to: "/solutions/assurance-iardt", icon: ShieldCheck, title: "Assurance IARDT", desc: "Auto, habitation, voyage, multirisque pro. Scan OCR IA.", tag: "Biens & activités" },
+  { to: "/solutions/gestion-risques", icon: Briefcase, title: "Gestion des Risques", desc: "Audit, prévention et conseil pour les entreprises.", tag: "Corporate" },
 ];
 
 const steps = [
@@ -49,7 +48,7 @@ function HomePage() {
       {/* HERO */}
       <section className="relative min-h-[100vh] bg-hero-gradient text-white overflow-hidden flex items-center pt-20">
         <div className="absolute inset-0 opacity-20" style={{
-          backgroundImage: "radial-gradient(circle at 25% 30%, rgba(232,160,32,0.4) 0px, transparent 50%), radial-gradient(circle at 75% 70%, rgba(26,58,143,0.6) 0px, transparent 50%)"
+          backgroundImage: "radial-gradient(circle at 25% 30%, rgba(45,127,249,0.4) 0px, transparent 50%), radial-gradient(circle at 75% 70%, rgba(26,58,143,0.6) 0px, transparent 50%)"
         }} />
         <div className="absolute inset-0 opacity-[0.07]" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -72,14 +71,14 @@ function HomePage() {
               </p>
 
               <div className="flex flex-wrap gap-3 mb-10">
-                <Link to="/devis" className="bg-gold-gradient text-gold-foreground font-semibold px-7 py-4 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
+                <Link to="/devis" className="bg-gold-gradient text-white font-semibold px-7 py-4 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
                   Obtenir mon devis <ArrowRight className="h-4 w-4" />
                 </Link>
                 <button
                   onClick={() => setVideoOpen(true)}
                   className="group flex items-center gap-3 px-5 py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-colors"
                 >
-                  <span className="h-10 w-10 rounded-full bg-gold-gradient flex items-center justify-center text-navy">
+                  <span className="h-10 w-10 rounded-full bg-gold-gradient flex items-center justify-center text-white">
                     <Play className="h-4 w-4 fill-current ml-0.5" />
                   </span>
                   <span className="font-medium">Voir la vidéo</span>
@@ -134,7 +133,7 @@ function HomePage() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-4 -right-4 bg-gold-gradient text-navy text-xs font-bold px-3 py-2 rounded-full shadow-glow"
+                className="absolute -top-4 -right-4 bg-gold-gradient text-white text-xs font-bold px-3 py-2 rounded-full shadow-glow"
               >
                 ✓ Payé via Orange Money
               </motion.div>
@@ -176,7 +175,7 @@ function HomePage() {
                 <div className="absolute -top-5 left-8 h-10 w-10 rounded-full bg-navy text-gold font-display font-bold flex items-center justify-center text-sm">
                   0{i + 1}
                 </div>
-                <div className="h-14 w-14 rounded-2xl bg-gold-gradient flex items-center justify-center text-navy mb-5">
+                <div className="h-14 w-14 rounded-2xl bg-gold-gradient flex items-center justify-center text-white mb-5">
                   <s.icon className="h-7 w-7" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-navy mb-2">{s.title}</h3>
@@ -187,20 +186,20 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PRODUCTS */}
+      {/* SOLUTIONS HUBS */}
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="text-gold text-xs font-bold tracking-[0.25em] uppercase">Nos Produits</span>
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-navy mt-3">Une protection pour chaque besoin</h2>
+              <span className="text-gold text-xs font-bold tracking-[0.25em] uppercase">Nos Solutions</span>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-navy mt-3 max-w-2xl">Des solutions adaptées à chaque besoin</h2>
             </div>
             <Link to="/devis" className="text-primary font-semibold hover:text-navy inline-flex items-center gap-1">
               Comparer les formules <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-            {products.map((p, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {solutions.map((p, i) => (
               <motion.div
                 key={p.to}
                 initial={{ opacity: 0, y: 20 }}
@@ -210,15 +209,16 @@ function HomePage() {
               >
                 <Link
                   to={p.to}
-                  className="group block h-full p-6 rounded-2xl border border-border bg-card hover:bg-navy hover:border-navy transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant"
+                  className="group block h-full p-7 rounded-2xl border border-border bg-card hover:bg-navy hover:border-navy transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant"
                 >
-                  <div className="h-12 w-12 rounded-xl bg-muted group-hover:bg-gold-gradient flex items-center justify-center text-primary group-hover:text-navy transition-colors mb-5">
+                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-gold-gradient flex items-center justify-center text-primary group-hover:text-white transition-colors mb-5 w-fit">
                     <p.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-navy group-hover:text-white transition-colors mb-2">{p.title}</h3>
+                  <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground group-hover:text-gold transition-colors mb-2">{p.tag}</div>
+                  <h3 className="font-display font-bold text-xl text-navy group-hover:text-white transition-colors mb-2 leading-tight">{p.title}</h3>
                   <p className="text-sm text-muted-foreground group-hover:text-white/70 transition-colors mb-5">{p.desc}</p>
                   <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:text-gold transition-colors">
-                    Souscrire <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                    Découvrir <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Link>
               </motion.div>
@@ -227,10 +227,72 @@ function HomePage() {
         </div>
       </section>
 
+      {/* OCR SIGNATURE FEATURE */}
+      <section className="py-24 bg-muted relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(circle at 20% 50%, rgba(45,127,249,0.15) 0px, transparent 50%)" }} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center relative">
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase mb-5">
+              <Sparkles className="h-3.5 w-3.5" /> Innovation exclusive
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-navy mb-5 leading-tight">
+              Scannez votre carte grise, <span className="text-primary">l'IA fait le reste.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg mb-7 max-w-xl leading-relaxed">
+              Une première au Cameroun : photographiez votre carte grise depuis votre téléphone, notre IA extrait immatriculation, marque, modèle et châssis en moins de 3 secondes. Zéro saisie manuelle.
+            </p>
+            <ul className="space-y-3 mb-8">
+              {[
+                "Extraction automatique en 3 secondes",
+                "Formulaire de souscription pré-rempli",
+                "Devis instantané et attestation immédiate",
+              ].map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <div className="h-6 w-6 rounded-full bg-gold-gradient flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="h-3.5 w-3.5 text-white" />
+                  </div>
+                  <span className="text-foreground">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <Link to="/solutions/assurance-iardt" className="bg-gold-gradient text-white font-semibold px-6 py-3.5 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
+              <ScanLine className="h-4 w-4" /> Essayer le scan
+            </Link>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="relative">
+            <div className="relative mx-auto max-w-sm bg-navy rounded-[2.5rem] p-3 border-4 border-navy/40 shadow-elegant">
+              <div className="bg-background rounded-[2rem] overflow-hidden aspect-[9/16] relative">
+                <div className="absolute inset-0 flex flex-col">
+                  <div className="p-4 text-center text-xs font-semibold text-navy border-b border-border">Scanner carte grise</div>
+                  <div className="flex-1 p-5 flex flex-col gap-3">
+                    <div className="relative aspect-[1.6] rounded-xl bg-gradient-to-br from-primary/30 to-navy/10 border-2 border-dashed border-primary/40 overflow-hidden">
+                      <motion.div className="absolute inset-x-0 h-1 bg-primary shadow-[0_0_20px_rgba(45,127,249,0.9)]" animate={{ top: ["0%", "100%", "0%"] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} />
+                      <div className="absolute inset-3 border border-primary/30 rounded-md flex items-center justify-center text-[10px] text-navy/60 font-mono">CARTE GRISE · CMR</div>
+                      <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-primary text-white text-[9px] font-bold animate-pulse">SCAN IA</div>
+                    </div>
+                    <div className="space-y-2 text-xs">
+                      {[{ l: "Immatriculation", v: "CE 4521 XL" }, { l: "Marque", v: "TOYOTA HILUX" }, { l: "Châssis", v: "JTERB71J8…" }].map((f, i) => (
+                        <motion.div key={f.l} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 + i * 0.3 }} className="bg-muted rounded-lg p-2 flex justify-between items-center">
+                          <span className="text-muted-foreground">{f.l}</span>
+                          <span className="font-mono font-semibold text-navy">{f.v}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <div className="bg-gold-gradient text-white text-xs font-bold py-3 rounded-lg flex items-center justify-center gap-1 mt-auto">
+                      <Zap className="h-3 w-3" /> Devis instantané prêt
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* STATS */}
       <section className="py-20 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: "radial-gradient(circle at 80% 20%, rgba(232,160,32,0.6) 0px, transparent 40%)"
+          backgroundImage: "radial-gradient(circle at 80% 20%, rgba(45,127,249,0.6) 0px, transparent 40%)"
         }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
@@ -307,7 +369,7 @@ function HomePage() {
                 </div>
                 <p className="text-foreground mb-5 leading-relaxed">"{t.text}"</p>
                 <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <div className="h-10 w-10 rounded-full bg-gold-gradient text-navy font-bold flex items-center justify-center">{t.name[0]}</div>
+                  <div className="h-10 w-10 rounded-full bg-gold-gradient text-white font-bold flex items-center justify-center">{t.name[0]}</div>
                   <div>
                     <div className="font-semibold text-navy text-sm">{t.name}</div>
                     <div className="text-xs text-muted-foreground">{t.role}</div>
@@ -321,12 +383,12 @@ function HomePage() {
 
       {/* FINAL CTA */}
       <section className="py-24 bg-hero-gradient text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 50% 50%, rgba(232,160,32,0.4) 0px, transparent 60%)" }} />
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 50% 50%, rgba(45,127,249,0.4) 0px, transparent 60%)" }} />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-5 text-balance">Assurez-vous en quelques clics.</h2>
           <p className="text-white/80 mb-10 max-w-2xl mx-auto text-lg">Rejoignez les milliers de Camerounais qui font confiance à DIRECT INSURANCE.</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link to="/devis" className="bg-gold-gradient text-gold-foreground font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
+            <Link to="/devis" className="bg-gold-gradient text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
               Démarrer mon devis <ArrowRight className="h-4 w-4" />
             </Link>
             <Link to="/contact" className="border border-white/30 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">

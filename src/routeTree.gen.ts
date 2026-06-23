@@ -19,8 +19,13 @@ import { Route as AssuranceSanteRouteImport } from './routes/assurance-sante'
 import { Route as AssuranceHabitationRouteImport } from './routes/assurance-habitation'
 import { Route as AssuranceAutoRouteImport } from './routes/assurance-auto'
 import { Route as AgencesRouteImport } from './routes/agences'
+import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolutionsGestionRisquesRouteImport } from './routes/solutions.gestion-risques'
+import { Route as SolutionsAssurancePersonnesRouteImport } from './routes/solutions.assurance-personnes'
+import { Route as SolutionsAssuranceMaladieRouteImport } from './routes/solutions.assurance-maladie'
+import { Route as SolutionsAssuranceIardtRouteImport } from './routes/solutions.assurance-iardt'
 
 const SinistresRoute = SinistresRouteImport.update({
   id: '/sinistres',
@@ -72,6 +77,11 @@ const AgencesRoute = AgencesRouteImport.update({
   path: '/agences',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActualitesRoute = ActualitesRouteImport.update({
+  id: '/actualites',
+  path: '/actualites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AProposRoute = AProposRouteImport.update({
   id: '/a-propos',
   path: '/a-propos',
@@ -82,10 +92,33 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsGestionRisquesRoute = SolutionsGestionRisquesRouteImport.update({
+  id: '/solutions/gestion-risques',
+  path: '/solutions/gestion-risques',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsAssurancePersonnesRoute =
+  SolutionsAssurancePersonnesRouteImport.update({
+    id: '/solutions/assurance-personnes',
+    path: '/solutions/assurance-personnes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsAssuranceMaladieRoute =
+  SolutionsAssuranceMaladieRouteImport.update({
+    id: '/solutions/assurance-maladie',
+    path: '/solutions/assurance-maladie',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsAssuranceIardtRoute = SolutionsAssuranceIardtRouteImport.update({
+  id: '/solutions/assurance-iardt',
+  path: '/solutions/assurance-iardt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/actualites': typeof ActualitesRoute
   '/agences': typeof AgencesRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
@@ -96,10 +129,15 @@ export interface FileRoutesByFullPath {
   '/devis': typeof DevisRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
+  '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
+  '/solutions/assurance-maladie': typeof SolutionsAssuranceMaladieRoute
+  '/solutions/assurance-personnes': typeof SolutionsAssurancePersonnesRoute
+  '/solutions/gestion-risques': typeof SolutionsGestionRisquesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/actualites': typeof ActualitesRoute
   '/agences': typeof AgencesRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
@@ -110,11 +148,16 @@ export interface FileRoutesByTo {
   '/devis': typeof DevisRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
+  '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
+  '/solutions/assurance-maladie': typeof SolutionsAssuranceMaladieRoute
+  '/solutions/assurance-personnes': typeof SolutionsAssurancePersonnesRoute
+  '/solutions/gestion-risques': typeof SolutionsGestionRisquesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/actualites': typeof ActualitesRoute
   '/agences': typeof AgencesRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
@@ -125,12 +168,17 @@ export interface FileRoutesById {
   '/devis': typeof DevisRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
+  '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
+  '/solutions/assurance-maladie': typeof SolutionsAssuranceMaladieRoute
+  '/solutions/assurance-personnes': typeof SolutionsAssurancePersonnesRoute
+  '/solutions/gestion-risques': typeof SolutionsGestionRisquesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/a-propos'
+    | '/actualites'
     | '/agences'
     | '/assurance-auto'
     | '/assurance-habitation'
@@ -141,10 +189,15 @@ export interface FileRouteTypes {
     | '/devis'
     | '/mon-espace'
     | '/sinistres'
+    | '/solutions/assurance-iardt'
+    | '/solutions/assurance-maladie'
+    | '/solutions/assurance-personnes'
+    | '/solutions/gestion-risques'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/a-propos'
+    | '/actualites'
     | '/agences'
     | '/assurance-auto'
     | '/assurance-habitation'
@@ -155,10 +208,15 @@ export interface FileRouteTypes {
     | '/devis'
     | '/mon-espace'
     | '/sinistres'
+    | '/solutions/assurance-iardt'
+    | '/solutions/assurance-maladie'
+    | '/solutions/assurance-personnes'
+    | '/solutions/gestion-risques'
   id:
     | '__root__'
     | '/'
     | '/a-propos'
+    | '/actualites'
     | '/agences'
     | '/assurance-auto'
     | '/assurance-habitation'
@@ -169,11 +227,16 @@ export interface FileRouteTypes {
     | '/devis'
     | '/mon-espace'
     | '/sinistres'
+    | '/solutions/assurance-iardt'
+    | '/solutions/assurance-maladie'
+    | '/solutions/assurance-personnes'
+    | '/solutions/gestion-risques'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
+  ActualitesRoute: typeof ActualitesRoute
   AgencesRoute: typeof AgencesRoute
   AssuranceAutoRoute: typeof AssuranceAutoRoute
   AssuranceHabitationRoute: typeof AssuranceHabitationRoute
@@ -184,6 +247,10 @@ export interface RootRouteChildren {
   DevisRoute: typeof DevisRoute
   MonEspaceRoute: typeof MonEspaceRoute
   SinistresRoute: typeof SinistresRoute
+  SolutionsAssuranceIardtRoute: typeof SolutionsAssuranceIardtRoute
+  SolutionsAssuranceMaladieRoute: typeof SolutionsAssuranceMaladieRoute
+  SolutionsAssurancePersonnesRoute: typeof SolutionsAssurancePersonnesRoute
+  SolutionsGestionRisquesRoute: typeof SolutionsGestionRisquesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -258,6 +325,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgencesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/actualites': {
+      id: '/actualites'
+      path: '/actualites'
+      fullPath: '/actualites'
+      preLoaderRoute: typeof ActualitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/a-propos': {
       id: '/a-propos'
       path: '/a-propos'
@@ -272,12 +346,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/gestion-risques': {
+      id: '/solutions/gestion-risques'
+      path: '/solutions/gestion-risques'
+      fullPath: '/solutions/gestion-risques'
+      preLoaderRoute: typeof SolutionsGestionRisquesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/assurance-personnes': {
+      id: '/solutions/assurance-personnes'
+      path: '/solutions/assurance-personnes'
+      fullPath: '/solutions/assurance-personnes'
+      preLoaderRoute: typeof SolutionsAssurancePersonnesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/assurance-maladie': {
+      id: '/solutions/assurance-maladie'
+      path: '/solutions/assurance-maladie'
+      fullPath: '/solutions/assurance-maladie'
+      preLoaderRoute: typeof SolutionsAssuranceMaladieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/assurance-iardt': {
+      id: '/solutions/assurance-iardt'
+      path: '/solutions/assurance-iardt'
+      fullPath: '/solutions/assurance-iardt'
+      preLoaderRoute: typeof SolutionsAssuranceIardtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
+  ActualitesRoute: ActualitesRoute,
   AgencesRoute: AgencesRoute,
   AssuranceAutoRoute: AssuranceAutoRoute,
   AssuranceHabitationRoute: AssuranceHabitationRoute,
@@ -288,17 +391,11 @@ const rootRouteChildren: RootRouteChildren = {
   DevisRoute: DevisRoute,
   MonEspaceRoute: MonEspaceRoute,
   SinistresRoute: SinistresRoute,
+  SolutionsAssuranceIardtRoute: SolutionsAssuranceIardtRoute,
+  SolutionsAssuranceMaladieRoute: SolutionsAssuranceMaladieRoute,
+  SolutionsAssurancePersonnesRoute: SolutionsAssurancePersonnesRoute,
+  SolutionsGestionRisquesRoute: SolutionsGestionRisquesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

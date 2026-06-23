@@ -42,7 +42,7 @@ function ContactPage() {
                   transition={{ delay: i * 0.08 }}
                   className="p-5 bg-card rounded-2xl border border-border shadow-card-soft flex gap-4"
                 >
-                  <div className="h-11 w-11 rounded-xl bg-gold-gradient text-navy flex items-center justify-center flex-shrink-0">
+                  <div className="h-11 w-11 rounded-xl bg-gold-gradient text-white flex items-center justify-center flex-shrink-0">
                     <c.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -78,7 +78,7 @@ function ContactPage() {
             >
               {sent ? (
                 <div className="text-center py-12">
-                  <div className="inline-flex h-16 w-16 rounded-full bg-gold-gradient text-navy items-center justify-center mb-5">
+                  <div className="inline-flex h-16 w-16 rounded-full bg-gold-gradient text-white items-center justify-center mb-5">
                     <Send className="h-7 w-7" />
                   </div>
                   <h2 className="font-display font-bold text-2xl text-navy mb-2">Message envoyé !</h2>
@@ -119,7 +119,7 @@ function ContactPage() {
                     <label className="text-sm font-semibold text-navy block mb-2">Message *</label>
                     <textarea required rows={5} className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-gold focus:outline-none resize-none" />
                   </div>
-                  <button type="submit" className="bg-gold-gradient text-gold-foreground font-semibold px-7 py-3.5 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
+                  <button type="submit" className="bg-gold-gradient text-white font-semibold px-7 py-3.5 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
                     Envoyer le message <Send className="h-4 w-4" />
                   </button>
                 </form>

@@ -39,7 +39,7 @@ export function ProductPage({
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-5 text-balance">{title}</h1>
             <p className="text-lg text-white/80 mb-8 max-w-xl">{subtitle}</p>
             <div className="flex flex-wrap gap-3">
-              <Link to="/devis" className="bg-gold-gradient text-gold-foreground font-semibold px-7 py-3.5 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
+              <Link to="/devis" className="bg-gold-gradient text-white font-semibold px-7 py-3.5 rounded-lg inline-flex items-center gap-2 hover:shadow-glow transition-all">
                 Souscrire maintenant <ArrowRight className="h-4 w-4" />
               </Link>
               <Link to="/contact" className="border border-white/30 text-white font-semibold px-7 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
@@ -74,7 +74,7 @@ export function ProductPage({
                 transition={{ delay: i * 0.1 }}
                 className="p-7 rounded-2xl border border-border bg-card shadow-card-soft hover:shadow-elegant hover:-translate-y-1 transition-all"
               >
-                <div className="h-12 w-12 rounded-xl bg-gold-gradient flex items-center justify-center text-navy font-bold mb-4">{i + 1}</div>
+                <div className="h-12 w-12 rounded-xl bg-gold-gradient flex items-center justify-center text-white font-bold mb-4">{i + 1}</div>
                 <h3 className="font-display font-bold text-lg text-navy mb-2">{b.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
               </motion.div>
@@ -128,7 +128,7 @@ export function ProductPage({
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Prêt à vous protéger ?</h2>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">Obtenez votre devis en moins de 2 minutes, 100% en ligne.</p>
-          <Link to="/devis" className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground font-semibold px-8 py-4 rounded-lg hover:shadow-glow transition-all">
+          <Link to="/devis" className="inline-flex items-center gap-2 bg-gold-gradient text-white font-semibold px-8 py-4 rounded-lg hover:shadow-glow transition-all">
             Démarrer mon devis <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

@@ -25,7 +25,7 @@ function AboutPage() {
   return (
     <SiteLayout>
       <section className="pt-28 pb-20 bg-hero-gradient text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 50%, rgba(232,160,32,0.5) 0px, transparent 50%)" }} />
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 50%, rgba(45,127,249,0.5) 0px, transparent 50%)" }} />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative text-center">
           <span className="inline-block px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-semibold tracking-wider uppercase mb-5">À Propos</span>
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 text-balance">30 ans au service des Camerounais</h1>
@@ -84,7 +84,7 @@ function AboutPage() {
                 transition={{ delay: i * 0.1 }}
                 className="p-7 bg-card rounded-2xl border border-border shadow-card-soft hover:shadow-elegant hover:-translate-y-1 transition-all"
               >
-                <div className="h-12 w-12 rounded-xl bg-gold-gradient text-navy flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-xl bg-gold-gradient text-white flex items-center justify-center mb-4">
                   <v.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-display font-bold text-lg text-navy mb-2">{v.title}</h3>
