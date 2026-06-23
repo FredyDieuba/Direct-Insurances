@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown, Users, HeartPulse, ShieldCheck, Briefcase, ArrowRight } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoUrl from "@/assets/logo.png";
 
 const solutions = [
   { to: "/solutions/assurance-personnes", label: "Assurance de Personnes", desc: "Vie, décès, épargne, retraite.", icon: Users },
@@ -33,7 +33,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
           <div className={`h-11 w-11 rounded-xl flex items-center justify-center transition-colors ${scrolled ? "bg-white shadow-card-soft" : "bg-white/95 backdrop-blur"}`}>
-            <img src={logoAsset.url} alt="Direct Insurance S.A." className="h-9 w-9 object-contain" />
+            <img src={logoUrl} alt="Direct Insurance S.A." className="h-9 w-9 object-contain" />
           </div>
           <div className="flex flex-col leading-none">
             <span className={`font-display font-bold text-base md:text-lg tracking-tight ${scrolled ? "text-navy" : "text-white"}`}>Direct Insurance</span>

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Linkedin } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoUrl from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="h-11 w-11 rounded-xl bg-white flex items-center justify-center">
-                <img src={logoAsset.url} alt="Direct Insurance S.A." className="h-9 w-9 object-contain" />
+                <img src={logoUrl} alt="Direct Insurance S.A." className="h-9 w-9 object-contain" />
               </div>
               <div className="leading-none">
                 <div className="font-display font-bold text-lg">Direct Insurance</div>
