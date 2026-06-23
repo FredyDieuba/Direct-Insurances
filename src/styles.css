@@ -40,10 +40,10 @@
 
   --shadow-elegant: 0 10px 40px -10px color-mix(in oklab, var(--navy) 25%, transparent);
   --shadow-card: 0 4px 20px -6px color-mix(in oklab, var(--navy) 12%, transparent);
-  --shadow-glow: 0 0 60px color-mix(in oklab, var(--gold) 35%, transparent);
+  --shadow-glow: 0 0 60px color-mix(in oklab, var(--gold) 45%, transparent);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.20 0.06 260) 0%, oklch(0.15 0.07 265) 50%, oklch(0.25 0.10 270) 100%);
-  --gradient-gold: linear-gradient(135deg, var(--gold) 0%, oklch(0.78 0.16 75) 100%);
+  --gradient-hero: linear-gradient(135deg, oklch(0.18 0.07 263) 0%, oklch(0.22 0.10 263) 50%, oklch(0.30 0.14 263) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.62 0.20 258) 0%, oklch(0.52 0.22 263) 100%);
   --gradient-subtle: linear-gradient(180deg, var(--background) 0%, var(--muted) 100%);
 }
 
@@ -64,9 +64,9 @@
   --primary: oklch(0.36 0.13 265);
   --primary-foreground: oklch(0.98 0.005 250);
 
-  /* Gold #E8A020 */
-  --gold: oklch(0.76 0.15 75);
-  --gold-foreground: oklch(0.20 0.05 260);
+  /* Accent Blue (replaces gold) #2D7FF9 */
+  --gold: oklch(0.62 0.20 258);
+  --gold-foreground: oklch(0.99 0.005 250);
 
   --secondary: oklch(0.96 0.01 250);
   --secondary-foreground: oklch(0.22 0.07 263);
@@ -95,7 +95,7 @@
   --navy-foreground: oklch(0.98 0.005 250);
   --primary: oklch(0.50 0.15 265);
   --primary-foreground: oklch(0.98 0.005 250);
-  --gold: oklch(0.78 0.16 75);
+  --gold: oklch(0.68 0.20 258);
   --gold-foreground: oklch(0.15 0.04 263);
   --secondary: oklch(0.25 0.05 263);
   --secondary-foreground: oklch(0.98 0.005 250);

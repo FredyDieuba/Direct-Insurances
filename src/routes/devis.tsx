@@ -123,7 +123,7 @@ function DevisPage() {
               {step === 4 && (
                 <motion.div key="4" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                   <div className="text-center py-6">
-                    <div className="inline-flex h-16 w-16 rounded-full bg-gold-gradient text-navy items-center justify-center mb-5">
+                    <div className="inline-flex h-16 w-16 rounded-full bg-gold-gradient text-white items-center justify-center mb-5">
                       <Check className="h-8 w-8" />
                     </div>
                     <h2 className="font-display font-bold text-3xl text-navy mb-2">Votre devis est prêt !</h2>
@@ -140,7 +140,7 @@ function DevisPage() {
                       </motion.div>
                       <div className="text-sm text-white/70">Soit ~{Math.round(price / 12).toLocaleString("fr-FR")} FCFA/mois</div>
                     </div>
-                    <Link to="/contact" className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground font-semibold px-8 py-4 rounded-lg hover:shadow-glow transition-all">
+                    <Link to="/contact" className="inline-flex items-center gap-2 bg-gold-gradient text-white font-semibold px-8 py-4 rounded-lg hover:shadow-glow transition-all">
                       Finaliser ma souscription <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -160,7 +160,7 @@ function DevisPage() {
                 <button
                   onClick={() => setStep(Math.min(4, step + 1))}
                   disabled={step === 1 && !product}
-                  className="inline-flex items-center gap-2 bg-gold-gradient text-gold-foreground font-semibold px-7 py-3 rounded-lg hover:shadow-glow transition-all disabled:opacity-50"
+                  className="inline-flex items-center gap-2 bg-gold-gradient text-white font-semibold px-7 py-3 rounded-lg hover:shadow-glow transition-all disabled:opacity-50"
                 >
                   Suivant <ArrowRight className="h-4 w-4" />
                 </button>

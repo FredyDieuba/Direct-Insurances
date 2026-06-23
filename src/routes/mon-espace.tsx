@@ -26,7 +26,7 @@ function EspacePage() {
             className="bg-card rounded-3xl shadow-elegant border border-border p-8 md:p-10"
           >
             <div className="text-center mb-8">
-              <div className="inline-flex h-14 w-14 rounded-2xl bg-gold-gradient text-navy items-center justify-center mb-4">
+              <div className="inline-flex h-14 w-14 rounded-2xl bg-gold-gradient text-white items-center justify-center mb-4">
                 <ShieldCheck className="h-7 w-7" />
               </div>
               <h1 className="text-2xl font-display font-bold text-navy mb-1">Espace Client</h1>
@@ -67,7 +67,7 @@ function EspacePage() {
                   <a href="#" className="text-xs text-primary hover:text-navy">Mot de passe oublié ?</a>
                 </div>
               )}
-              <button type="submit" className="w-full bg-gold-gradient text-gold-foreground font-semibold py-3.5 rounded-lg inline-flex items-center justify-center gap-2 hover:shadow-glow transition-all">
+              <button type="submit" className="w-full bg-gold-gradient text-white font-semibold py-3.5 rounded-lg inline-flex items-center justify-center gap-2 hover:shadow-glow transition-all">
                 {tab === "login" ? "Se connecter" : "Créer mon compte"} <ArrowRight className="h-4 w-4" />
               </button>
             </form>
