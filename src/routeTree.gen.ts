@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SinistresRouteImport } from './routes/sinistres'
 import { Route as MonEspaceRouteImport } from './routes/mon-espace'
 import { Route as EspaceClientRouteImport } from './routes/espace-client'
@@ -27,7 +28,13 @@ import { Route as SolutionsGestionRisquesRouteImport } from './routes/solutions.
 import { Route as SolutionsAssurancePersonnesRouteImport } from './routes/solutions.assurance-personnes'
 import { Route as SolutionsAssuranceMaladieRouteImport } from './routes/solutions.assurance-maladie'
 import { Route as SolutionsAssuranceIardtRouteImport } from './routes/solutions.assurance-iardt'
+import { Route as ActualitesSlugRouteImport } from './routes/actualites.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SinistresRoute = SinistresRouteImport.update({
   id: '/sinistres',
   path: '/sinistres',
@@ -120,11 +127,16 @@ const SolutionsAssuranceIardtRoute = SolutionsAssuranceIardtRouteImport.update({
   path: '/solutions/assurance-iardt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActualitesSlugRoute = ActualitesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ActualitesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
-  '/actualites': typeof ActualitesRoute
+  '/actualites': typeof ActualitesRouteWithChildren
   '/agences': typeof AgencesRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
@@ -136,6 +148,8 @@ export interface FileRoutesByFullPath {
   '/espace-client': typeof EspaceClientRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
   '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
   '/solutions/assurance-maladie': typeof SolutionsAssuranceMaladieRoute
   '/solutions/assurance-personnes': typeof SolutionsAssurancePersonnesRoute
@@ -144,7 +158,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
-  '/actualites': typeof ActualitesRoute
+  '/actualites': typeof ActualitesRouteWithChildren
   '/agences': typeof AgencesRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
@@ -156,6 +170,8 @@ export interface FileRoutesByTo {
   '/espace-client': typeof EspaceClientRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
   '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
   '/solutions/assurance-maladie': typeof SolutionsAssuranceMaladieRoute
   '/solutions/assurance-personnes': typeof SolutionsAssurancePersonnesRoute
@@ -165,7 +181,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
-  '/actualites': typeof ActualitesRoute
+  '/actualites': typeof ActualitesRouteWithChildren
   '/agences': typeof AgencesRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
@@ -177,6 +193,8 @@ export interface FileRoutesById {
   '/espace-client': typeof EspaceClientRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
   '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
   '/solutions/assurance-maladie': typeof SolutionsAssuranceMaladieRoute
   '/solutions/assurance-personnes': typeof SolutionsAssurancePersonnesRoute
@@ -199,6 +217,8 @@ export interface FileRouteTypes {
     | '/espace-client'
     | '/mon-espace'
     | '/sinistres'
+    | '/sitemap.xml'
+    | '/actualites/$slug'
     | '/solutions/assurance-iardt'
     | '/solutions/assurance-maladie'
     | '/solutions/assurance-personnes'
@@ -219,6 +239,8 @@ export interface FileRouteTypes {
     | '/espace-client'
     | '/mon-espace'
     | '/sinistres'
+    | '/sitemap.xml'
+    | '/actualites/$slug'
     | '/solutions/assurance-iardt'
     | '/solutions/assurance-maladie'
     | '/solutions/assurance-personnes'
@@ -239,6 +261,8 @@ export interface FileRouteTypes {
     | '/espace-client'
     | '/mon-espace'
     | '/sinistres'
+    | '/sitemap.xml'
+    | '/actualites/$slug'
     | '/solutions/assurance-iardt'
     | '/solutions/assurance-maladie'
     | '/solutions/assurance-personnes'
@@ -248,7 +272,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
-  ActualitesRoute: typeof ActualitesRoute
+  ActualitesRoute: typeof ActualitesRouteWithChildren
   AgencesRoute: typeof AgencesRoute
   AssuranceAutoRoute: typeof AssuranceAutoRoute
   AssuranceHabitationRoute: typeof AssuranceHabitationRoute
@@ -260,6 +284,7 @@ export interface RootRouteChildren {
   EspaceClientRoute: typeof EspaceClientRoute
   MonEspaceRoute: typeof MonEspaceRoute
   SinistresRoute: typeof SinistresRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsAssuranceIardtRoute: typeof SolutionsAssuranceIardtRoute
   SolutionsAssuranceMaladieRoute: typeof SolutionsAssuranceMaladieRoute
   SolutionsAssurancePersonnesRoute: typeof SolutionsAssurancePersonnesRoute
@@ -268,6 +293,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sinistres': {
       id: '/sinistres'
       path: '/sinistres'
@@ -394,13 +426,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsAssuranceIardtRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/actualites/$slug': {
+      id: '/actualites/$slug'
+      path: '/$slug'
+      fullPath: '/actualites/$slug'
+      preLoaderRoute: typeof ActualitesSlugRouteImport
+      parentRoute: typeof ActualitesRoute
+    }
   }
 }
+
+interface ActualitesRouteChildren {
+  ActualitesSlugRoute: typeof ActualitesSlugRoute
+}
+
+const ActualitesRouteChildren: ActualitesRouteChildren = {
+  ActualitesSlugRoute: ActualitesSlugRoute,
+}
+
+const ActualitesRouteWithChildren = ActualitesRoute._addFileChildren(
+  ActualitesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
-  ActualitesRoute: ActualitesRoute,
+  ActualitesRoute: ActualitesRouteWithChildren,
   AgencesRoute: AgencesRoute,
   AssuranceAutoRoute: AssuranceAutoRoute,
   AssuranceHabitationRoute: AssuranceHabitationRoute,
@@ -412,6 +463,7 @@ const rootRouteChildren: RootRouteChildren = {
   EspaceClientRoute: EspaceClientRoute,
   MonEspaceRoute: MonEspaceRoute,
   SinistresRoute: SinistresRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsAssuranceIardtRoute: SolutionsAssuranceIardtRoute,
   SolutionsAssuranceMaladieRoute: SolutionsAssuranceMaladieRoute,
   SolutionsAssurancePersonnesRoute: SolutionsAssurancePersonnesRoute,

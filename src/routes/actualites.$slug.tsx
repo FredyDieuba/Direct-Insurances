@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, User, Calendar, MessageCircle, Share2, Linkedin, Copy, ArrowRight } from "lucide-react";
+import type { Article } from "@/data/articles";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ARTICLES } from "@/data/articles";
 
@@ -74,7 +75,7 @@ function ArticlePage() {
           </div>
 
           <div className="prose prose-lg max-w-none text-foreground/90 space-y-5">
-            {article.body.map((p, i) => <p key={i} className="leading-relaxed">{p}</p>)}
+            {article.body.map((p: string, i: number) => <p key={i} className="leading-relaxed">{p}</p>)}
           </div>
 
           {/* Share + CTAs */}
@@ -115,7 +116,7 @@ function ArticlePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-navy mb-8">Articles liés</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              {related.map((a) => (
+              {related.map((a: Article) => (
                 <Link key={a.slug} to="/actualites/$slug" params={{ slug: a.slug }}
                   className="group block bg-card rounded-2xl border border-border overflow-hidden hover:shadow-elegant hover:-translate-y-1 transition-all">
                   <div className="aspect-[16/10] overflow-hidden">
