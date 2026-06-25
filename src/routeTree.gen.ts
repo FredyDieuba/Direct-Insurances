@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SinistresRouteImport } from './routes/sinistres'
 import { Route as MonEspaceRouteImport } from './routes/mon-espace'
+import { Route as EspaceClientRouteImport } from './routes/espace-client'
 import { Route as DevisRouteImport } from './routes/devis'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AssuranceVoyageRouteImport } from './routes/assurance-voyage'
@@ -35,6 +36,11 @@ const SinistresRoute = SinistresRouteImport.update({
 const MonEspaceRoute = MonEspaceRouteImport.update({
   id: '/mon-espace',
   path: '/mon-espace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EspaceClientRoute = EspaceClientRouteImport.update({
+  id: '/espace-client',
+  path: '/espace-client',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DevisRoute = DevisRouteImport.update({
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/assurance-voyage': typeof AssuranceVoyageRoute
   '/contact': typeof ContactRoute
   '/devis': typeof DevisRoute
+  '/espace-client': typeof EspaceClientRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
   '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
@@ -146,6 +153,7 @@ export interface FileRoutesByTo {
   '/assurance-voyage': typeof AssuranceVoyageRoute
   '/contact': typeof ContactRoute
   '/devis': typeof DevisRoute
+  '/espace-client': typeof EspaceClientRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
   '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
@@ -166,6 +174,7 @@ export interface FileRoutesById {
   '/assurance-voyage': typeof AssuranceVoyageRoute
   '/contact': typeof ContactRoute
   '/devis': typeof DevisRoute
+  '/espace-client': typeof EspaceClientRoute
   '/mon-espace': typeof MonEspaceRoute
   '/sinistres': typeof SinistresRoute
   '/solutions/assurance-iardt': typeof SolutionsAssuranceIardtRoute
@@ -187,6 +196,7 @@ export interface FileRouteTypes {
     | '/assurance-voyage'
     | '/contact'
     | '/devis'
+    | '/espace-client'
     | '/mon-espace'
     | '/sinistres'
     | '/solutions/assurance-iardt'
@@ -206,6 +216,7 @@ export interface FileRouteTypes {
     | '/assurance-voyage'
     | '/contact'
     | '/devis'
+    | '/espace-client'
     | '/mon-espace'
     | '/sinistres'
     | '/solutions/assurance-iardt'
@@ -225,6 +236,7 @@ export interface FileRouteTypes {
     | '/assurance-voyage'
     | '/contact'
     | '/devis'
+    | '/espace-client'
     | '/mon-espace'
     | '/sinistres'
     | '/solutions/assurance-iardt'
@@ -245,6 +257,7 @@ export interface RootRouteChildren {
   AssuranceVoyageRoute: typeof AssuranceVoyageRoute
   ContactRoute: typeof ContactRoute
   DevisRoute: typeof DevisRoute
+  EspaceClientRoute: typeof EspaceClientRoute
   MonEspaceRoute: typeof MonEspaceRoute
   SinistresRoute: typeof SinistresRoute
   SolutionsAssuranceIardtRoute: typeof SolutionsAssuranceIardtRoute
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/mon-espace'
       fullPath: '/mon-espace'
       preLoaderRoute: typeof MonEspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/espace-client': {
+      id: '/espace-client'
+      path: '/espace-client'
+      fullPath: '/espace-client'
+      preLoaderRoute: typeof EspaceClientRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/devis': {
@@ -389,6 +409,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssuranceVoyageRoute: AssuranceVoyageRoute,
   ContactRoute: ContactRoute,
   DevisRoute: DevisRoute,
+  EspaceClientRoute: EspaceClientRoute,
   MonEspaceRoute: MonEspaceRoute,
   SinistresRoute: SinistresRoute,
   SolutionsAssuranceIardtRoute: SolutionsAssuranceIardtRoute,
