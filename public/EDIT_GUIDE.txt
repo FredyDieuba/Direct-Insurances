@@ -1,0 +1,74 @@
+DIRECT INSURANCE — Guide d'édition rapide
+===========================================
+
+Ce guide centralise les points à éditer dans le code pour mettre à jour le contenu
+du site sans erreur.
+
+1) COORDONNÉES
+   Fichier : src/components/site/Footer.tsx
+     - CONTACT_EMAIL, CONTACT_PHONE_1, CONTACT_PHONE_2, CONTACT_ADDRESS
+   Fichier : src/routes/contact.tsx (réutilise les constantes du Footer)
+   Fichier : src/routes/agences.tsx
+     - Tableau `agencies` (nom, ville, adresse, téléphones, WhatsApp)
+
+2) BANNIÈRE 30 ANS
+   Fichier : src/components/site/AnnouncementBanner.tsx
+   Texte gérés dans le dictionnaire i18n : src/lib/ui-prefs.tsx (clés banner.*)
+   Pour réafficher la bannière à tous les visiteurs, incrémenter la constante
+   STORAGE_KEY (ex: di_banner_30ans_dismissed_v2).
+
+3) HEADER / NAV
+   Fichier : src/components/site/Header.tsx
+   Les libellés FR/EN sont dans src/lib/ui-prefs.tsx (clés nav.*).
+
+4) ESPACE CLIENT (COMING SOON)
+   Fichier : src/routes/espace-client.tsx
+   - Date de lancement : const LAUNCH = new Date("2026-09-23T00:00:00")
+   - Liste des features dans le tableau `features`.
+
+5) ACTUALITÉS / BLOG
+   Fichier : src/data/articles.ts
+   - Tableau `ARTICLES` (slug, cat, title, excerpt, author, time, date, img, body)
+   - Catégories disponibles : CATEGORIES (filtre du listing)
+   La page liste : src/routes/actualites.tsx (6 articles/page)
+   La page détail : src/routes/actualites.$slug.tsx
+
+6) SOLUTIONS (4 PÔLES)
+   Fichiers : src/routes/solutions.*.tsx
+   Composant partagé : src/components/site/SolutionHub.tsx
+   - Pour ajouter un produit, ajouter une entrée dans le tableau `products`.
+
+7) DEVIS
+   Fichier : src/routes/devis.tsx
+   - Tableau CATEGORIES : ajouter / retirer des produits.
+   - Fonction fieldsFor(sub) : adapter les champs par produit.
+
+8) PARTENAIRES (HOME + ABOUT)
+   Fichier : src/components/site/PartnersStrip.tsx
+   - Tableaux PARTNERS_ASSUREURS et PARTNERS_REASSUREURS.
+
+9) SEO
+   - Métadonnées globales : src/routes/__root.tsx
+   - Métadonnées par page : option `head()` de chaque fichier de route.
+   - JSON-LD Organisation : src/routes/__root.tsx
+   - Sitemap : src/routes/sitemap[.]xml.ts
+   - robots.txt : public/robots.txt
+
+10) DESIGN TOKENS
+    Fichier : src/styles.css
+    - Couleurs : :root --navy / --gold / --primary / --teal / --muted
+    - Animations marquee : .animate-marquee, .animate-marquee-fast, etc.
+    - Mode sombre : variables sous .dark
+
+11) LANGUE & THÈME (TOGGLE)
+    Fichier : src/lib/ui-prefs.tsx
+    - Ajouter une clé de traduction dans `dict`.
+    - L'utilisateur peut basculer FR/EN et clair/sombre depuis la navbar.
+
+12) E-MAIL DE CONTACT
+    L'adresse de référence est : directinsurance2002@yahoo.fr
+    Centralisée dans src/components/site/Footer.tsx (CONTACT_EMAIL).
+
+Toute modification du contenu marketing peut être effectuée sans toucher
+au design system. Pour toute évolution structurelle, contacter votre
+développeur.

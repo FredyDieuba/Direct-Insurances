@@ -11,22 +11,23 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { UIPrefsProvider } from "../lib/ui-prefs";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page introuvable</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          La page que vous recherchez n'existe pas ou a été déplacée.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Retour à l'accueil
           </Link>
         </div>
       </div>
@@ -45,26 +46,23 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Cette page n'a pas pu se charger
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Une erreur est survenue. Vous pouvez rafraîchir ou retourner à l'accueil.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
+            onClick={() => { router.invalidate(); reset(); }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Réessayer
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Accueil
           </a>
         </div>
       </div>
@@ -72,29 +70,46 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const ORG_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "InsuranceAgency",
+  name: "DIRECT INSURANCE SA",
+  description: "Courtier d'assurance agréé au Cameroun depuis 1996.",
+  url: "https://direct-assurance.lovable.app",
+  telephone: "+237677750485",
+  email: "directinsurance2002@yahoo.fr",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Nouvelle Route Bastos, à côté de Tradex avant Air France",
+    addressLocality: "Yaoundé",
+    addressCountry: "CM",
+  },
+  foundingYear: "1996",
+  areaServed: "Cameroun",
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#0B1C3D" },
-      { title: "DIRECT INSURANCE — Votre assurance en 5 minutes, 100% en ligne" },
-      { name: "description", content: "Assurances Auto, Voyage, Habitation, Santé et Vie au Cameroun. Souscription en ligne, paiement Mobile Money, attestation immédiate." },
-      { property: "og:title", content: "DIRECT INSURANCE — Votre assurance en 5 minutes, 100% en ligne" },
-      { property: "og:description", content: "Assurances Auto, Voyage, Habitation, Santé et Vie au Cameroun. Souscription en ligne, paiement Mobile Money, attestation immédiate." },
+      { title: "DIRECT INSURANCE SA | Courtier d'Assurance au Cameroun depuis 1996" },
+      { name: "description", content: "DIRECT INSURANCE SA — votre courtier-conseil agréé au Cameroun. Assurance IARDT, Maladie, Personnes & Gestion des Risques. Devis gratuit. Agrément MINFI N°03/038/CF/A." },
+      { property: "og:title", content: "DIRECT INSURANCE SA | Courtier d'Assurance au Cameroun" },
+      { property: "og:description", content: "Courtier-conseil agréé au Cameroun depuis 1996. IARDT, Maladie, Personnes, Gestion des Risques." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "DIRECT INSURANCE" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "DIRECT INSURANCE — Votre assurance en 5 minutes, 100% en ligne" },
-      { name: "twitter:description", content: "Assurances Auto, Voyage, Habitation, Santé et Vie au Cameroun. Souscription en ligne, paiement Mobile Money, attestation immédiate." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/RjgjO3ZIbucP5JCSgHLjY9aTwcM2/social-images/social-1781688592097-téléchargement_(8)_(1).webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/RjgjO3ZIbucP5JCSgHLjY9aTwcM2/social-images/social-1781688592097-téléchargement_(8)_(1).webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(ORG_JSONLD) },
     ],
   }),
   shellComponent: RootShell,
@@ -105,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>
@@ -119,11 +134,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <UIPrefsProvider>
+        <Outlet />
+      </UIPrefsProvider>
     </QueryClientProvider>
   );
 }

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /espace-client
+
+Sitemap: https://direct-assurance.lovable.app/sitemap.xml

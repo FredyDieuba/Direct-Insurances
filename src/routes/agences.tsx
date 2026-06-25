@@ -1,105 +1,121 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Navigation, Mail, Check, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/agences")({
   head: () => ({
     meta: [
-      { title: "Nos Agences — DIRECT INSURANCE" },
-      { name: "description", content: "Retrouvez nos agences à Yaoundé, Douala, Bafoussam et partout au Cameroun." },
+      { title: "Nos Agences — Yaoundé & Douala | DIRECT INSURANCE SA" },
+      { name: "description", content: "Retrouvez DIRECT INSURANCE SA à Yaoundé (Bastos, Olembe) et Douala. Itinéraires GPS, téléphone, WhatsApp." },
+      { property: "og:url", content: "https://direct-assurance.lovable.app/agences" },
     ],
+    links: [{ rel: "canonical", href: "https://direct-assurance.lovable.app/agences" }],
   }),
   component: AgencesPage,
 });
 
 const agencies = [
-  { city: "Yaoundé", name: "Agence Centrale Bastos", address: "Nouvelle route Bastos, Yaoundé", phone: "+237 242 651 606", hours: "Lun-Ven 8h-17h · Sam 9h-13h" },
-  { city: "Yaoundé", name: "Agence Nkolbisson", address: "Face Mairie de Nkolbisson, Yaoundé", phone: "+237 677 75 04 85", hours: "Lun-Ven 8h-17h" },
-  { city: "Douala", name: "Agence Akwa", address: "Boulevard de la République, Akwa, Douala", phone: "+237 677 75 04 85", hours: "Lun-Ven 8h-17h · Sam 9h-13h" },
-  { city: "Bafoussam", name: "Agence Bafoussam Centre", address: "Avenue du Marché A, Bafoussam", phone: "+237 677 75 04 85", hours: "Lun-Ven 8h-17h" },
+  {
+    name: "Siège Social — Bastos",
+    city: "Yaoundé",
+    address: "Nouvelle Route Bastos, à côté de Tradex avant Air France",
+    phone: "(237) 677 750 485",
+    phone2: "242 65 16 07",
+    whatsapp: "237677750485",
+  },
+  {
+    name: "Agence Olembe",
+    city: "Yaoundé",
+    address: "Olembe, Yaoundé",
+    phone: "(237) 677 750 485",
+    phone2: null,
+    whatsapp: "237677750485",
+  },
+  {
+    name: "Agence Douala",
+    city: "Douala",
+    address: "Boulevard de la République, Douala",
+    phone: "(237) 662 074 467",
+    phone2: null,
+    whatsapp: "237662074467",
+  },
 ];
 
 function AgencesPage() {
-  const [filter, setFilter] = useState("Toutes");
-  const cities = ["Toutes", ...Array.from(new Set(agencies.map((a) => a.city)))];
-  const filtered = filter === "Toutes" ? agencies : agencies.filter((a) => a.city === filter);
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
 
   return (
     <SiteLayout>
-      <section className="pt-28 pb-20 bg-subtle-gradient">
+      <section className="pt-12 pb-16 bg-subtle-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <span className="text-gold text-xs font-bold tracking-[0.25em] uppercase">Réseau</span>
+          <div className="text-center mb-12">
+            <span className="text-gold text-xs font-bold tracking-[0.25em] uppercase">Notre Réseau</span>
             <h1 className="text-3xl md:text-5xl font-display font-bold text-navy mt-3 mb-3">Nos Agences au Cameroun</h1>
-            <p className="text-muted-foreground">Un conseiller proche de chez vous, dans toutes les grandes villes.</p>
+            <p className="text-muted-foreground">Trois agences à votre service à Yaoundé et Douala.</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {cities.map((c) => (
-              <button
-                key={c}
-                onClick={() => setFilter(c)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
-                  filter === c ? "bg-navy text-white" : "bg-card border border-border text-foreground hover:bg-muted"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              {filtered.map((a, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {agencies.map((a, i) => {
+              const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(a.address + ", " + a.city + ", Cameroun")}`;
+              return (
                 <motion.div
                   key={a.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="p-6 bg-card rounded-2xl border border-border shadow-card-soft hover:shadow-elegant transition-all"
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                  className="p-6 bg-card rounded-2xl border border-border shadow-card-soft hover:shadow-elegant transition-all flex flex-col"
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <div className="text-xs text-gold font-bold uppercase tracking-wider mb-1">{a.city}</div>
-                      <h3 className="font-display font-bold text-xl text-navy">{a.name}</h3>
+                  <div className="text-xs text-gold font-bold uppercase tracking-wider mb-1">{a.city}</div>
+                  <h3 className="font-display font-bold text-xl text-navy mb-4">{a.name}</h3>
+                  <div className="space-y-3 text-sm text-foreground/85 flex-1">
+                    <div className="flex gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" /> {a.address}</div>
+                    <div className="flex gap-3"><Phone className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />
+                      <span>{a.phone}{a.phone2 && <> · {a.phone2}</>}</span>
                     </div>
                   </div>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div className="flex gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />{a.address}</div>
-                    <div className="flex gap-3"><Phone className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />{a.phone}</div>
-                    <div className="flex gap-3"><Clock className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />{a.hours}</div>
+                  <div className="grid grid-cols-2 gap-2 mt-5">
+                    <a href={mapsUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-navy text-white text-sm font-semibold hover:bg-navy/90 transition-colors">
+                      <Navigation className="h-4 w-4" /> Itinéraire GPS
+                    </a>
+                    <a href={`https://wa.me/${a.whatsapp}`} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-[#25D366] text-white text-sm font-semibold hover:opacity-90 transition-opacity">
+                      <MessageCircle className="h-4 w-4" /> WhatsApp
+                    </a>
                   </div>
                 </motion.div>
-              ))}
-            </div>
-
-            <div className="sticky top-28 h-[500px] rounded-3xl overflow-hidden shadow-elegant border border-border bg-navy relative">
-              <div className="absolute inset-0 bg-hero-gradient" />
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: "linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)",
-                backgroundSize: "40px 40px"
-              }} />
-              {[
-                { x: "30%", y: "40%", label: "Yaoundé" },
-                { x: "20%", y: "70%", label: "Douala" },
-                { x: "45%", y: "55%", label: "Bafoussam" },
-              ].map((p) => (
-                <div key={p.label} className="absolute" style={{ left: p.x, top: p.y }}>
-                  <div className="relative">
-                    <div className="h-4 w-4 rounded-full bg-gold animate-pulse-ring" />
-                    <div className="absolute left-6 top-0 bg-white text-navy text-xs font-bold px-2 py-1 rounded shadow-md whitespace-nowrap">{p.label}</div>
-                  </div>
-                </div>
-              ))}
-              <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur rounded-xl p-4 text-navy">
-                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Carte interactive</div>
-                <div className="text-sm font-semibold">Cliquez sur une agence pour obtenir l'itinéraire GPS</div>
-              </div>
-            </div>
+              );
+            })}
           </div>
+        </div>
+      </section>
+
+      {/* COMING SOON CTA */}
+      <section className="py-20 bg-hero-gradient text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 30% 30%, rgba(232,160,32,0.4) 0px, transparent 50%), radial-gradient(circle at 70% 70%, rgba(26,58,143,0.6) 0px, transparent 50%)" }} />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <Sparkles className="h-8 w-8 text-gold mx-auto mb-4" />
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-gold mb-4">Votre Assurance Bientôt Disponible en Ligne</h2>
+          <p className="text-white/85 mb-8 text-lg">
+            DIRECT INSURANCE prépare le lancement de sa plateforme digitale. Soyez parmi les premiers à y accéder.
+          </p>
+          {sent ? (
+            <div className="inline-flex items-center gap-2 px-6 py-4 rounded-lg bg-white/10 backdrop-blur-md border border-gold/30 text-gold">
+              <Check className="h-5 w-5" /> Merci ! Vous serez informé en avant-première.
+            </div>
+          ) : (
+            <form onSubmit={(e) => { e.preventDefault(); if (email) setSent(true); }} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+              <div className="flex-1 relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="votre@email.com"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/15 text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors" />
+              </div>
+              <button type="submit" className="bg-gold-gradient text-navy font-semibold px-6 py-3 rounded-lg hover:shadow-glow transition-all whitespace-nowrap">
+                Je veux être informé
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </SiteLayout>
