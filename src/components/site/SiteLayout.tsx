@@ -3,21 +3,16 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { AnnouncementBanner } from "./AnnouncementBanner";
-import { useUIPrefs } from "@/lib/ui-prefs";
 
-export function SiteLayout({ children }: { children: ReactNode }) {
-  const { lang } = useUIPrefs();
+export function SiteLayout({ children, transparentHeader = false }: { children: ReactNode; transparentHeader?: boolean }) {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      {/* Banner is FIXED at top:0, Header is FIXED at top:11 (44px = h-11 banner) */}
       <AnnouncementBanner />
-      {/* Spacer to push content under fixed header + banner */}
-      <div className="h-16 md:h-20" aria-hidden />
-      {lang === "en" && (
-        <div className="bg-gold/10 border-y border-gold/30 text-navy text-center text-sm py-2 px-4">
-          🌐 The English version of this content is being prepared — for now, body content is displayed in French.
-        </div>
-      )}
+      <Header />
+      {/* Spacer pushes content below banner+header unless the page wants the hero behind the header */}
+      {!transparentHeader && <div className="h-[124px] md:h-[124px]" aria-hidden />}
+      {transparentHeader && <div className="h-11" aria-hidden />}
       <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />
