@@ -10,6 +10,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { Counter } from "@/components/site/Counter";
 import { PartnersStrip } from "@/components/site/PartnersStrip";
 import { useUIPrefs } from "@/lib/ui-prefs";
+import { assets } from "@/lib/assets";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/")({
 });
 
 // African professional / family / business imagery (Unsplash)
-const HERO_IMG = "../src/assets/img/hero/home.png"; // placeholder, replace with brand hero image
+const HERO_IMG = assets.hero.home; // imported from registry
 const HERO_VIDEO = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // placeholder, replace with brand video
 
 function HomePage() {
@@ -41,7 +42,7 @@ function HomePage() {
       title: t("sol.personnes"),
       desc: t("sol.personnes.desc"),
       products: ["Prévoyance Retraite", "Temporaire Décès", "Rente Éducation"],
-      img: "../src/assets/img/hero/hero.png",
+      img: assets.hero.auto,
       icon: Users,
     },
     {
@@ -50,7 +51,7 @@ function HomePage() {
       title: t("sol.maladie"),
       desc: t("sol.maladie.desc"),
       products: ["Frais Médicaux & Pharmaceutiques", "Soins Dentaires & Lunetterie", "Assurance Voyage"],
-      img: "../src/assets/img/hero/maladie.png",
+      img: assets.hero.maladie,
       icon: HeartPulse,
     },
     {
@@ -59,7 +60,7 @@ function HomePage() {
       title: t("sol.iardt"),
       desc: t("sol.iardt.desc"),
       products: ["Automobile", "Multirisque Bâtiments", "Transports Maritimes & Terrestres"],
-      img: "../src/assets/img/hero/Irads.png",
+      img: assets.hero.iardt,
       icon: ShieldCheck,
     },
     {
@@ -68,7 +69,7 @@ function HomePage() {
       title: t("sol.risques"),
       desc: t("sol.risques.desc"),
       products: ["Audit des Assurances", "PROGESPA", "Pack Vie GOLD"],
-      img: "../src/assets/img/hero/risques.jpg",
+      img: assets.hero.risques,
       icon: Briefcase,
     },
   ];
@@ -82,10 +83,10 @@ function HomePage() {
   ];
 
   const testimonials = [
-    { name: "Aïcha Mbarga", role: "Cliente Auto, Douala", text: "Souscription en quelques minutes, attestation reçue sur WhatsApp. Service vraiment professionnel.", stars: 5, photo: "../src/assets/img/hero/profile.jpg" },
-    { name: "Jean-Paul Tchoua", role: "Entrepreneur, Yaoundé", text: "Service client réactif et indemnisation rapide après mon sinistre. Je recommande vivement.", stars: 5, photo: "../src/assets/img/hero/profile.jpg" },
-    { name: "Mireille Kamgang", role: "Famille, Bafoussam", text: "Excellent rapport qualité-prix sur l'assurance santé famille. Une équipe à l'écoute.", stars: 5, photo: "../src/assets/img/hero/profile.jpg" },
-    { name: "Christelle Nguele", role: "Directrice PME, Douala", text: "PROGESPA a transformé notre gestion des risques. Audit clair, conseils actionnables.", stars: 5, photo: "../src/assets/img/hero/profile.jpg" },
+    { name: "Aïcha Mbarga", role: "Cliente Auto, Douala", text: "Souscription en quelques minutes, attestation reçue sur WhatsApp. Service vraiment professionnel.", stars: 5, photo: assets.hero.profile },
+    { name: "Jean-Paul Tchoua", role: "Entrepreneur, Yaoundé", text: "Service client réactif et indemnisation rapide après mon sinistre. Je recommande vivement.", stars: 5, photo: assets.hero.profile },
+    { name: "Mireille Kamgang", role: "Famille, Bafoussam", text: "Excellent rapport qualité-prix sur l'assurance santé famille. Une équipe à l'écoute.", stars: 5, photo: assets.hero.profile },
+    { name: "Christelle Nguele", role: "Directrice PME, Douala", text: "PROGESPA a transformé notre gestion des risques. Audit clair, conseils actionnables.", stars: 5, photo: assets.hero.profile },
   ];
 
   return (

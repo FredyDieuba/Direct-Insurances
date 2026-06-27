@@ -1,3 +1,5 @@
+import { assets } from "@/lib/assets";
+
 export type Article = {
   slug: string;
   cat: string;
@@ -21,7 +23,7 @@ export const ARTICLES: Article[] = [
     author: "Paul B.",
     time: "6 min",
     date: "2026-01-15",
-    img: "../src/assets/img/hero/hero.png",
+    img: assets.hero.auto,
     body: [
       "L'assurance automobile au Cameroun est encadrée par le Code CIMA. La responsabilité civile reste obligatoire : circuler sans elle expose à des sanctions financières et à la mise en fourrière.",
       "Au-delà du minimum légal, trois grandes formules structurent le marché : tiers simple, tiers étendu (vol, incendie, bris de glaces) et tous risques. Le choix dépend principalement de la valeur vénale du véhicule.",
@@ -37,7 +39,7 @@ export const ARTICLES: Article[] = [
     author: "Dr. Ngono",
     time: "8 min",
     date: "2026-02-02",
-    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    img: assets.hero.sante,
     body: [
       "L'assurance maladie privée comble les lacunes de la protection sociale et donne accès à un réseau de cliniques privées au Cameroun et à l'étranger.",
       "Quatre familles de garanties à examiner : hospitalisation, consultations & pharmacie, dentaire & optique, et soins à l'étranger.",
@@ -53,7 +55,7 @@ export const ARTICLES: Article[] = [
     author: "Marc T.",
     time: "7 min",
     date: "2026-02-20",
-    img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+    img: assets.hero.risques,
     body: [
       "PROGESPA est notre programme dédié de Gestion de Patrimoine d'Assurance. Il s'adresse aux entreprises qui souhaitent une vision consolidée de leurs risques et de leurs contrats.",
       "L'approche se décline en trois temps : audit initial, plan d'action et pilotage continu. Chaque trimestre, un reporting clair fait remonter l'évolution du risque et du budget.",
@@ -69,7 +71,7 @@ export const ARTICLES: Article[] = [
     author: "Christelle N.",
     time: "5 min",
     date: "2026-03-05",
-    img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+    img: assets.hero.ir2,
     body: [
       "Une assurance voyage couvre les frais médicaux, le rapatriement sanitaire, la perte ou le retard de bagages et l'annulation du voyage.",
       "Pour un visa Schengen, l'attestation doit garantir un minimum de 30 000 € de frais médicaux et inclure le rapatriement.",
@@ -85,7 +87,7 @@ export const ARTICLES: Article[] = [
     author: "Hortense F.",
     time: "6 min",
     date: "2026-03-20",
-    img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    img: assets.hero.homeAlt,
     body: [
       "La rente éducation est un produit de prévoyance qui verse une rente à vos enfants pour financer leurs études, en cas de décès ou à terme.",
       "Le mécanisme est simple : vous versez des cotisations périodiques modulables. Au terme, l'enfant perçoit une rente sur 4 à 8 ans.",
@@ -101,7 +103,7 @@ export const ARTICLES: Article[] = [
     author: "Sarah K.",
     time: "5 min",
     date: "2026-04-02",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    img: assets.hero.risque,
     body: [
       "L'audit des assurances cartographie l'ensemble des contrats de l'entreprise et les confronte à la réalité des risques.",
       "Trois constats récurrents : des doublons de garantie, des sur-assurances coûteuses, et des angles morts critiques (cyber-risque, perte d'exploitation).",

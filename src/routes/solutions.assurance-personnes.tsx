@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PiggyBank, FileSignature, GraduationCap, Heart, Flower2, Briefcase, ShieldCheck, Zap, CreditCard, Headphones } from "lucide-react";
 import { SolutionHub } from "@/components/site/SolutionHub";
+import { assets } from "@/lib/assets";
 
 export const Route = createFileRoute("/solutions/assurance-personnes")({
   head: () => ({
@@ -8,7 +9,7 @@ export const Route = createFileRoute("/solutions/assurance-personnes")({
       { title: "Assurance de Personnes | Retraite, Décès, Éducation — DIRECT INSURANCE Cameroun" },
       { name: "description", content: "Prévoyance retraite, temporaire décès, rente éducation, funérailles, accidents corporels. DIRECT INSURANCE SA accompagne les familles camerounaises." },
       { property: "og:url", content: "https://direct-assurance.lovable.app/solutions/assurance-personnes" },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1600&q=80" },
+      { property: "og:image", content: `https://direct-assurance.lovable.app${assets.hero.auto}` },
     ],
     links: [{ rel: "canonical", href: "https://direct-assurance.lovable.app/solutions/assurance-personnes" }],
   }),
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/solutions/assurance-personnes")({
       title="La vie est un cadeau,"
       highlight="il faut l'assurer !"
       intro="Préparez votre retraite, protégez vos proches et financez les études de vos enfants. Des solutions sur mesure pour chaque étape de la vie."
-      heroImage="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=2000&q=80"
+      heroImage={assets.hero.auto}
       pillarLabel="Nos produits Personnes"
       products={[
         { title: "Prévoyance Retraite", desc: "Épargnez progressivement pour une retraite sereine.", icon: PiggyBank },

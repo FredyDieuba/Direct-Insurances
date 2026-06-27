@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Car, Shield, Flame, Scale, Building2, Truck, Wrench, Droplets, GlassWater, Laptop, Home, Package, Users, ScanLine, Zap, CreditCard, Headphones } from "lucide-react";
 import { SolutionHub } from "@/components/site/SolutionHub";
+import { assets } from "@/lib/assets";
 
 export const Route = createFileRoute("/solutions/assurance-iardt")({
   head: () => ({
@@ -9,7 +10,7 @@ export const Route = createFileRoute("/solutions/assurance-iardt")({
       { name: "description", content: "Assurance automobile, habitation, transport et multirisque au Cameroun. DIRECT INSURANCE SA, courtier agréé CIMA. Obtenez votre devis gratuit." },
       { property: "og:title", content: "Assurance IARDT — DIRECT INSURANCE" },
       { property: "og:url", content: "https://direct-assurance.lovable.app/solutions/assurance-iardt" },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1600&q=80" },
+      { property: "og:image", content: `https://direct-assurance.lovable.app${assets.hero.iardt}` },
     ],
     links: [{ rel: "canonical", href: "https://direct-assurance.lovable.app/solutions/assurance-iardt" }],
   }),
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/solutions/assurance-iardt")({
       title="Vivez sereinement"
       highlight="chaque événement de votre vie !"
       intro="Les produits I.A.R.D.T. (Incendie, Accidents, Risques Divers et Transports) protègent vos biens, vos activités et votre responsabilité — pour les particuliers comme pour les entreprises."
-      heroImage="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2000&q=80"
+      heroImage={assets.hero.iardt}
       pillarLabel="Nos produits IARDT"
       products={[
         { title: "Automobile", desc: "Responsabilité civile, tiers, tous risques, flotte.", icon: Car },

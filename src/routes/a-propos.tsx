@@ -4,7 +4,7 @@ import { Award, Shield, Users, Building2, HandHeart, Eye, Target, BadgeCheck, Sp
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Counter } from "@/components/site/Counter";
 import { PartnersStrip } from "@/components/site/PartnersStrip";
-
+import { assets } from "@/lib/assets";
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
     meta: [
@@ -38,7 +38,7 @@ function AboutPage() {
       {/* 1. HERO */}
       <section className="relative pt-28 pb-24 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80" alt="Équipe professionnelle DIRECT INSURANCE" className="h-full w-full object-cover" loading="eager" />
+          <img src={assets.hero.homeAlt} alt="Équipe professionnelle DIRECT INSURANCE" className="h-full w-full object-cover" loading="eager" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(11,28,61,0.92) 0%, rgba(11,28,61,0.75) 100%)" }} />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">

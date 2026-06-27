@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Stethoscope, Pill, Smile, Eye, Plane, Globe2, ShieldCheck, Zap, CreditCard, Headphones, HeartPulse } from "lucide-react";
 import { SolutionHub } from "@/components/site/SolutionHub";
+import { assets } from "@/lib/assets";
 
 export const Route = createFileRoute("/solutions/assurance-maladie")({
   head: () => ({
@@ -8,7 +9,7 @@ export const Route = createFileRoute("/solutions/assurance-maladie")({
       { title: "Assurance Maladie Cameroun | Individuelle, Famille, Entreprise — DIRECT INSURANCE" },
       { name: "description", content: "Assurance santé individuelle, famille, entreprise au Cameroun. Frais médicaux, dentaire, lunetterie, voyage. DIRECT INSURANCE SA." },
       { property: "og:url", content: "https://direct-assurance.lovable.app/solutions/assurance-maladie" },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80" },
+      { property: "og:image", content: `https://direct-assurance.lovable.app${assets.hero.maladie}` },
     ],
     links: [{ rel: "canonical", href: "https://direct-assurance.lovable.app/solutions/assurance-maladie" }],
   }),
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/solutions/assurance-maladie")({
       title="Une bonne vie passe par"
       highlight="une santé de fer !"
       intro="Couvrez vos frais médicaux, dentaires, optiques et vos déplacements à l'étranger. Une protection complète pour vous, votre famille et vos collaborateurs."
-      heroImage="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=2000&q=80"
+      heroImage={assets.hero.maladie}
       pillarLabel="Nos produits Maladie"
       products={[
         { title: "Assistance", desc: "Téléconsultation, prise en charge et orientation médicale.", icon: HeartPulse },

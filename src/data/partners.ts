@@ -1,3 +1,5 @@
+import { assets } from "@/lib/assets";
+
 export type PartnerType = "assureur" | "réassureur";
 
 export interface Partner {
@@ -7,78 +9,24 @@ export interface Partner {
     website?: string;
 }
 
-export const partners: Partner[] = [
-    // Assureurs
-    {
-        name: "Assureur 1",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 2",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 3",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 4",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 5",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 6",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 7",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 8",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Assureur 9",
-        type: "assureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
+const pLogos = [
+    assets.partners.logoD2,
+    assets.partners.logoD3,
+    assets.partners.logoD4,
+    assets.partners.logoD5,
+    assets.partners.logoSunu,
+    assets.partners.logoD18
+];
 
-    // Réassureurs
-    {
-        name: "Réassureur 1",
-        type: "réassureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Réassureur 2",
-        type: "réassureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Réassureur 3",
-        type: "réassureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Réassureur 4",
-        type: "réassureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
-    {
-        name: "Réassureur 5",
-        type: "réassureur",
-        logoUrl: "../src/assets/img/logo/assureurs/download (2).png",
-    },
+export const partners: Partner[] = [
+    ...Array.from({ length: 9 }).map((_, i) => ({
+        name: `Assureur ${i + 1}`,
+        type: "assureur" as PartnerType,
+        logoUrl: pLogos[i % pLogos.length],
+    })),
+    ...Array.from({ length: 5 }).map((_, i) => ({
+        name: `Réassureur ${i + 1}`,
+        type: "réassureur" as PartnerType,
+        logoUrl: pLogos[(i + 3) % pLogos.length],
+    }))
 ];
