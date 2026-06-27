@@ -1,58 +1,32 @@
-// Real partner logos fetched dynamically via Clearbit Logo API
-// (free, no auth required). Missing logos fall back to a brand chip.
+import { partners, Partner } from "@/data/partners";
 
-type Partner = { name: string; domain?: string };
+const assureurs = partners.filter((p) => p.type === "assureur");
+const reassureurs = partners.filter((p) => p.type === "réassureur");
 
-const PARTNERS_ASSUREURS: Partner[] = [
-  { name: "SUNU Assurances", domain: "sunu-group.com" },
-  { name: "Activa", domain: "group-activa.com" },
-  { name: "AXA", domain: "axa.com" },
-  { name: "Allianz", domain: "allianz.com" },
-  { name: "SAAR", domain: "saarassurances.com" },
-  { name: "Chanas Assurances", domain: "chanas.net" },
-];
-
-const PARTNERS_REASSUREURS: Partner[] = [
-  { name: "Munich RE", domain: "munichre.com" },
-  { name: "Swiss Re", domain: "swissre.com" },
-  { name: "SCOR", domain: "scor.com" },
-  { name: "CICA-RE", domain: "cica-re.com" },
-  { name: "Africa Re", domain: "africa-re.com" },
-  { name: "Atlanta RE", domain: "atlanta-re.com" },
-];
-
-function LogoChip({ p }: { p: Partner }) {
-  const src = p.domain ? `https://logo.clearbit.com/${p.domain}?size=120` : null;
+function LogoGrid({ items }: { items: Partner[] }) {
   return (
-    <div className="flex-shrink-0 mx-3 md:mx-5 h-16 md:h-20 w-40 md:w-48 px-5 rounded-xl bg-card border border-border shadow-card-soft flex items-center justify-center gap-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-      {src ? (
-        <img
-          src={src}
-          alt={p.name}
-          loading="lazy"
-          className="max-h-9 md:max-h-10 max-w-full object-contain"
-          onError={(e) => {
-            const t = e.currentTarget;
-            t.style.display = "none";
-            (t.nextElementSibling as HTMLElement | null)?.removeAttribute("hidden");
-          }}
-        />
-      ) : null}
-      <span hidden={!!src} className="font-display font-bold text-navy text-sm md:text-base whitespace-nowrap">
-        {p.name}
-      </span>
-    </div>
-  );
-}
-
-function MarqueeRow({ items, fast = false }: { items: Partner[]; fast?: boolean }) {
-  // Duplicate enough times to ensure continuous flow on wide screens
-  const doubled = [...items, ...items, ...items];
-  return (
-    <div className="overflow-hidden">
-      <div className={`flex w-max ${fast ? "animate-marquee-fast" : "animate-marquee"} pause-on-hover`}>
-        {doubled.map((p, i) => <LogoChip key={`${p.name}-${i}`} p={p} />)}
-      </div>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mt-8">
+      {items.map((p, i) => (
+        <div
+          key={`${p.name}-${i}`}
+          className="h-24 md:h-28 px-4 rounded-xl bg-card border border-border shadow-card-soft flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all bg-white"
+        >
+          <img
+            src={p.logoUrl}
+            alt={p.name}
+            loading="lazy"
+            className="max-h-12 md:max-h-14 max-w-full object-contain"
+            onError={(e) => {
+              const t = e.currentTarget;
+              t.style.display = "none";
+              (t.nextElementSibling as HTMLElement | null)?.removeAttribute("hidden");
+            }}
+          />
+          <span hidden className="font-display font-bold text-navy text-sm md:text-base whitespace-nowrap">
+            {p.name}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -74,24 +48,24 @@ export function PartnersStrip({
           <h2 className="text-2xl md:text-4xl font-display font-bold text-navy mt-2">{title}</h2>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-12">
           <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4 text-center font-semibold">
-              Partenaires Assureurs
+            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground text-center font-semibold border-b border-border pb-4 w-max mx-auto px-6">
+              Nos Assureurs
             </div>
-            <MarqueeRow items={PARTNERS_ASSUREURS} />
+            <LogoGrid items={assureurs} />
           </div>
 
           <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4 text-center font-semibold">
-              Partenaires Réassureurs
+            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground text-center font-semibold border-b border-border pb-4 w-max mx-auto px-6">
+              Nos Réassureurs
             </div>
-            <MarqueeRow items={PARTNERS_REASSUREURS} fast />
+            <LogoGrid items={reassureurs} />
           </div>
 
           {showClients && (
-            <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4 text-center font-semibold">
+            <div className="mt-12">
+              <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center font-semibold border-b border-border pb-4 w-max mx-auto px-6">
                 Références Clients
               </div>
               <div className="flex flex-wrap items-center justify-center gap-3">

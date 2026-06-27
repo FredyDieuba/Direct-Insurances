@@ -21,7 +21,7 @@ export const ARTICLES: Article[] = [
     author: "Paul B.",
     time: "6 min",
     date: "2026-01-15",
-    img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
+    img: "../src/assets/img/hero/hero.png",
     body: [
       "L'assurance automobile au Cameroun est encadrée par le Code CIMA. La responsabilité civile reste obligatoire : circuler sans elle expose à des sanctions financières et à la mise en fourrière.",
       "Au-delà du minimum légal, trois grandes formules structurent le marché : tiers simple, tiers étendu (vol, incendie, bris de glaces) et tous risques. Le choix dépend principalement de la valeur vénale du véhicule.",

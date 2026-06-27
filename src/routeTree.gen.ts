@@ -11,15 +11,20 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SinistresRouteImport } from './routes/sinistres'
+import { Route as PresentationRouteImport } from './routes/presentation'
+import { Route as PolitiqueDeConfidentialiteRouteImport } from './routes/politique-de-confidentialite'
 import { Route as MonEspaceRouteImport } from './routes/mon-espace'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as EspaceClientRouteImport } from './routes/espace-client'
 import { Route as DevisRouteImport } from './routes/devis'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConditionsGeneralesRouteImport } from './routes/conditions-generales'
 import { Route as AssuranceVoyageRouteImport } from './routes/assurance-voyage'
 import { Route as AssuranceVieRouteImport } from './routes/assurance-vie'
 import { Route as AssuranceSanteRouteImport } from './routes/assurance-sante'
 import { Route as AssuranceHabitationRouteImport } from './routes/assurance-habitation'
 import { Route as AssuranceAutoRouteImport } from './routes/assurance-auto'
+import { Route as AideRouteImport } from './routes/aide'
 import { Route as AgencesRouteImport } from './routes/agences'
 import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as AProposRouteImport } from './routes/a-propos'
@@ -40,9 +45,25 @@ const SinistresRoute = SinistresRouteImport.update({
   path: '/sinistres',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PresentationRoute = PresentationRouteImport.update({
+  id: '/presentation',
+  path: '/presentation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PolitiqueDeConfidentialiteRoute =
+  PolitiqueDeConfidentialiteRouteImport.update({
+    id: '/politique-de-confidentialite',
+    path: '/politique-de-confidentialite',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const MonEspaceRoute = MonEspaceRouteImport.update({
   id: '/mon-espace',
   path: '/mon-espace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EspaceClientRoute = EspaceClientRouteImport.update({
@@ -58,6 +79,11 @@ const DevisRoute = DevisRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConditionsGeneralesRoute = ConditionsGeneralesRouteImport.update({
+  id: '/conditions-generales',
+  path: '/conditions-generales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AssuranceVoyageRoute = AssuranceVoyageRouteImport.update({
@@ -83,6 +109,11 @@ const AssuranceHabitationRoute = AssuranceHabitationRouteImport.update({
 const AssuranceAutoRoute = AssuranceAutoRouteImport.update({
   id: '/assurance-auto',
   path: '/assurance-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AideRoute = AideRouteImport.update({
+  id: '/aide',
+  path: '/aide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgencesRoute = AgencesRouteImport.update({
@@ -138,15 +169,20 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRouteWithChildren
   '/agences': typeof AgencesRoute
+  '/aide': typeof AideRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
   '/assurance-sante': typeof AssuranceSanteRoute
   '/assurance-vie': typeof AssuranceVieRoute
   '/assurance-voyage': typeof AssuranceVoyageRoute
+  '/conditions-generales': typeof ConditionsGeneralesRoute
   '/contact': typeof ContactRoute
   '/devis': typeof DevisRoute
   '/espace-client': typeof EspaceClientRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-espace': typeof MonEspaceRoute
+  '/politique-de-confidentialite': typeof PolitiqueDeConfidentialiteRoute
+  '/presentation': typeof PresentationRoute
   '/sinistres': typeof SinistresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/actualites/$slug': typeof ActualitesSlugRoute
@@ -160,15 +196,20 @@ export interface FileRoutesByTo {
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRouteWithChildren
   '/agences': typeof AgencesRoute
+  '/aide': typeof AideRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
   '/assurance-sante': typeof AssuranceSanteRoute
   '/assurance-vie': typeof AssuranceVieRoute
   '/assurance-voyage': typeof AssuranceVoyageRoute
+  '/conditions-generales': typeof ConditionsGeneralesRoute
   '/contact': typeof ContactRoute
   '/devis': typeof DevisRoute
   '/espace-client': typeof EspaceClientRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-espace': typeof MonEspaceRoute
+  '/politique-de-confidentialite': typeof PolitiqueDeConfidentialiteRoute
+  '/presentation': typeof PresentationRoute
   '/sinistres': typeof SinistresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/actualites/$slug': typeof ActualitesSlugRoute
@@ -183,15 +224,20 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRouteWithChildren
   '/agences': typeof AgencesRoute
+  '/aide': typeof AideRoute
   '/assurance-auto': typeof AssuranceAutoRoute
   '/assurance-habitation': typeof AssuranceHabitationRoute
   '/assurance-sante': typeof AssuranceSanteRoute
   '/assurance-vie': typeof AssuranceVieRoute
   '/assurance-voyage': typeof AssuranceVoyageRoute
+  '/conditions-generales': typeof ConditionsGeneralesRoute
   '/contact': typeof ContactRoute
   '/devis': typeof DevisRoute
   '/espace-client': typeof EspaceClientRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-espace': typeof MonEspaceRoute
+  '/politique-de-confidentialite': typeof PolitiqueDeConfidentialiteRoute
+  '/presentation': typeof PresentationRoute
   '/sinistres': typeof SinistresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/actualites/$slug': typeof ActualitesSlugRoute
@@ -207,15 +253,20 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/actualites'
     | '/agences'
+    | '/aide'
     | '/assurance-auto'
     | '/assurance-habitation'
     | '/assurance-sante'
     | '/assurance-vie'
     | '/assurance-voyage'
+    | '/conditions-generales'
     | '/contact'
     | '/devis'
     | '/espace-client'
+    | '/mentions-legales'
     | '/mon-espace'
+    | '/politique-de-confidentialite'
+    | '/presentation'
     | '/sinistres'
     | '/sitemap.xml'
     | '/actualites/$slug'
@@ -229,15 +280,20 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/actualites'
     | '/agences'
+    | '/aide'
     | '/assurance-auto'
     | '/assurance-habitation'
     | '/assurance-sante'
     | '/assurance-vie'
     | '/assurance-voyage'
+    | '/conditions-generales'
     | '/contact'
     | '/devis'
     | '/espace-client'
+    | '/mentions-legales'
     | '/mon-espace'
+    | '/politique-de-confidentialite'
+    | '/presentation'
     | '/sinistres'
     | '/sitemap.xml'
     | '/actualites/$slug'
@@ -251,15 +307,20 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/actualites'
     | '/agences'
+    | '/aide'
     | '/assurance-auto'
     | '/assurance-habitation'
     | '/assurance-sante'
     | '/assurance-vie'
     | '/assurance-voyage'
+    | '/conditions-generales'
     | '/contact'
     | '/devis'
     | '/espace-client'
+    | '/mentions-legales'
     | '/mon-espace'
+    | '/politique-de-confidentialite'
+    | '/presentation'
     | '/sinistres'
     | '/sitemap.xml'
     | '/actualites/$slug'
@@ -274,15 +335,20 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   ActualitesRoute: typeof ActualitesRouteWithChildren
   AgencesRoute: typeof AgencesRoute
+  AideRoute: typeof AideRoute
   AssuranceAutoRoute: typeof AssuranceAutoRoute
   AssuranceHabitationRoute: typeof AssuranceHabitationRoute
   AssuranceSanteRoute: typeof AssuranceSanteRoute
   AssuranceVieRoute: typeof AssuranceVieRoute
   AssuranceVoyageRoute: typeof AssuranceVoyageRoute
+  ConditionsGeneralesRoute: typeof ConditionsGeneralesRoute
   ContactRoute: typeof ContactRoute
   DevisRoute: typeof DevisRoute
   EspaceClientRoute: typeof EspaceClientRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   MonEspaceRoute: typeof MonEspaceRoute
+  PolitiqueDeConfidentialiteRoute: typeof PolitiqueDeConfidentialiteRoute
+  PresentationRoute: typeof PresentationRoute
   SinistresRoute: typeof SinistresRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsAssuranceIardtRoute: typeof SolutionsAssuranceIardtRoute
@@ -307,11 +373,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SinistresRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/presentation': {
+      id: '/presentation'
+      path: '/presentation'
+      fullPath: '/presentation'
+      preLoaderRoute: typeof PresentationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politique-de-confidentialite': {
+      id: '/politique-de-confidentialite'
+      path: '/politique-de-confidentialite'
+      fullPath: '/politique-de-confidentialite'
+      preLoaderRoute: typeof PolitiqueDeConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mon-espace': {
       id: '/mon-espace'
       path: '/mon-espace'
       fullPath: '/mon-espace'
       preLoaderRoute: typeof MonEspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/espace-client': {
@@ -333,6 +420,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conditions-generales': {
+      id: '/conditions-generales'
+      path: '/conditions-generales'
+      fullPath: '/conditions-generales'
+      preLoaderRoute: typeof ConditionsGeneralesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/assurance-voyage': {
@@ -368,6 +462,13 @@ declare module '@tanstack/react-router' {
       path: '/assurance-auto'
       fullPath: '/assurance-auto'
       preLoaderRoute: typeof AssuranceAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aide': {
+      id: '/aide'
+      path: '/aide'
+      fullPath: '/aide'
+      preLoaderRoute: typeof AideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/agences': {
@@ -453,15 +554,20 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   ActualitesRoute: ActualitesRouteWithChildren,
   AgencesRoute: AgencesRoute,
+  AideRoute: AideRoute,
   AssuranceAutoRoute: AssuranceAutoRoute,
   AssuranceHabitationRoute: AssuranceHabitationRoute,
   AssuranceSanteRoute: AssuranceSanteRoute,
   AssuranceVieRoute: AssuranceVieRoute,
   AssuranceVoyageRoute: AssuranceVoyageRoute,
+  ConditionsGeneralesRoute: ConditionsGeneralesRoute,
   ContactRoute: ContactRoute,
   DevisRoute: DevisRoute,
   EspaceClientRoute: EspaceClientRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   MonEspaceRoute: MonEspaceRoute,
+  PolitiqueDeConfidentialiteRoute: PolitiqueDeConfidentialiteRoute,
+  PresentationRoute: PresentationRoute,
   SinistresRoute: SinistresRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsAssuranceIardtRoute: SolutionsAssuranceIardtRoute,

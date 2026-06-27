@@ -113,6 +113,12 @@ const dict: Record<string, { fr: string; en: string }> = {
   "footer.company": { fr: "Société", en: "Company" },
   "footer.contact": { fr: "Contact", en: "Contact" },
   "footer.rights": { fr: "Tous droits réservés.", en: "All rights reserved." },
+  "footer.desc": { fr: "Depuis 1996, votre courtier-conseil en assurance au Cameroun. Agréé MINFI N°03/038/CF/A. Membre SOGEP GROUP.", en: "Since 1996, your insurance broker in Cameroon. MINFI Approved N°03/038/CF/A. SOGEP GROUP Member." },
+  "footer.sinistre": { fr: "Déclarer un sinistre", en: "Report a claim" },
+  "footer.espaceclient": { fr: "Espace Client (bientôt)", en: "Customer Area (soon)" },
+  "footer.legal": { fr: "Mentions Légales", en: "Legal Notice" },
+  "footer.privacy": { fr: "Politique de Confidentialité", en: "Privacy Policy" },
+  "footer.terms": { fr: "Conditions Générales", en: "Terms & Conditions" },
 };
 
 export function UIPrefsProvider({ children }: { children: ReactNode }) {
@@ -123,7 +129,7 @@ export function UIPrefsProvider({ children }: { children: ReactNode }) {
       const l = (localStorage.getItem("di_lang") as Lang | null) ?? "fr";
       setLangState(l);
       document.documentElement.lang = l;
-    } catch {}
+    } catch { }
   }, []);
 
   const setLang = useCallback((l: Lang) => {
@@ -131,7 +137,7 @@ export function UIPrefsProvider({ children }: { children: ReactNode }) {
     try {
       localStorage.setItem("di_lang", l);
       document.documentElement.lang = l;
-    } catch {}
+    } catch { }
   }, []);
 
   const t = useCallback((key: string) => dict[key]?.[lang] ?? key, [lang]);
@@ -155,8 +161,8 @@ export function useUIPrefs() {
   if (!ctx) {
     return {
       lang: "fr" as Lang,
-      setLang: () => {},
-      toggleLang: () => {},
+      setLang: () => { },
+      toggleLang: () => { },
       t: (k: string) => dict[k]?.fr ?? k,
     };
   }

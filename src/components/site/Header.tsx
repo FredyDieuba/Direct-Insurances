@@ -17,11 +17,25 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [prodOpen, setProdOpen] = useState(false);
 
+  const [bannerVisible, setBannerVisible] = useState(true);
+
   useEffect(() => {
+    try {
+      setBannerVisible(localStorage.getItem("di_banner_30ans_dismissed") !== "1");
+    } catch {
+      setBannerVisible(true);
+    }
+
+    const onDismiss = () => setBannerVisible(false);
+    window.addEventListener("banner_dismissed", onDismiss);
+
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("banner_dismissed", onDismiss);
+    };
   }, []);
 
   // Transparent over hero → solid white with navy text on scroll
@@ -38,11 +52,12 @@ export function Header() {
     { to: "/agences", label: t("nav.agences") },
     { to: "/actualites", label: t("nav.actualites") },
     { to: "/a-propos", label: t("nav.about") },
+    { to: "/aide", label: lang === "fr" ? "Aide" : "Help" },
     { to: "/contact", label: t("nav.contact") },
   ] as const;
 
   return (
-    <header className={`fixed top-11 inset-x-0 z-40 transition-all duration-300 ${headerBg}`}>
+    <header className={`fixed ${bannerVisible ? "top-11" : "top-0"} inset-x-0 z-40 transition duration-300 ${headerBg}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group" aria-label="Direct Insurance — Accueil">
           <div className="h-11 w-11 rounded-xl bg-white shadow-card-soft flex items-center justify-center">
@@ -119,6 +134,7 @@ export function Header() {
             <Link to="/agences" className="px-3 py-3 rounded-md font-medium hover:bg-muted" onClick={() => setOpen(false)}>{t("nav.agences")}</Link>
             <Link to="/actualites" className="px-3 py-3 rounded-md font-medium hover:bg-muted" onClick={() => setOpen(false)}>{t("nav.actualites")}</Link>
             <Link to="/a-propos" className="px-3 py-3 rounded-md font-medium hover:bg-muted" onClick={() => setOpen(false)}>{t("nav.about")}</Link>
+            <Link to="/aide" className="px-3 py-3 rounded-md font-medium hover:bg-muted" onClick={() => setOpen(false)}>{lang === "fr" ? "Aide" : "Help"}</Link>
             <Link to="/contact" className="px-3 py-3 rounded-md font-medium hover:bg-muted" onClick={() => setOpen(false)}>{t("nav.contact")}</Link>
 
             <button onClick={toggleLang} className="mt-3 mx-3 px-3 py-2 rounded-md text-xs font-bold bg-muted text-navy inline-flex items-center justify-center gap-1">

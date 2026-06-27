@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, ChevronDown } from "lucide-react";
+import { Check, ArrowRight, ChevronDown, FileText, Download } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { useState } from "react";
 
@@ -96,6 +96,27 @@ export function ProductPage({
                 <span className="text-sm md:text-base text-foreground">{c}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Sheet Download */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 text-primary mb-6">
+            <FileText className="h-8 w-8" />
+          </div>
+          <h2 className="text-3xl font-display font-bold text-navy mb-4">Fiche descriptive complète</h2>
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Consultez le document détaillé pour retrouver nos tarifs, l'étendue exacte des garanties et les conditions spécifiques à ce produit d'assurance.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a href="/docs/fiche-service.pdf" target="_blank" onClick={(e) => e.preventDefault()} className="border-2 border-primary text-primary font-semibold px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/5 transition-colors">
+              <Download className="h-4 w-4" /> Télécharger (PDF)
+            </a>
+            <Link to="/devis" className="bg-gold-gradient text-white font-semibold px-6 py-3.5 rounded-lg flex items-center gap-2 hover:shadow-glow transition-all">
+              Obtenir un devis gratuit <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

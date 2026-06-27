@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { X, Sparkles } from "lucide-react";
 import { useUIPrefs } from "@/lib/ui-prefs";
 
-// Session-only dismiss: banner re-appears on every reload of a fresh session.
-const STORAGE_KEY = "di_banner_30ans_dismissed_session";
+const STORAGE_KEY = "di_banner_30ans_dismissed";
 
 export function AnnouncementBanner() {
   const { t } = useUIPrefs();
@@ -11,15 +10,16 @@ export function AnnouncementBanner() {
 
   useEffect(() => {
     try {
-      setVisible(sessionStorage.getItem(STORAGE_KEY) !== "1");
+      setVisible(localStorage.getItem(STORAGE_KEY) !== "1");
     } catch {
       setVisible(true);
     }
   }, []);
 
   const dismiss = () => {
-    try { sessionStorage.setItem(STORAGE_KEY, "1"); } catch {}
+    try { localStorage.setItem(STORAGE_KEY, "1"); } catch {}
     setVisible(false);
+    window.dispatchEvent(new Event("banner_dismissed"));
   };
 
   if (!visible) return null;

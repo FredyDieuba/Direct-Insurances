@@ -58,7 +58,7 @@ function ArticlePage() {
       <article className="pt-8 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <Link to="/actualites" className="inline-flex items-center gap-1 text-sm text-primary hover:underline mb-6">
-            <ArrowLeft className="h-4 w-4" /> Toutes les actualités
+            <ArrowLeft className="h-4 w-4" /> Retour aux articles
           </Link>
 
           <span className="inline-block px-3 py-1 rounded bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4">{article.cat}</span>
@@ -114,7 +114,7 @@ function ArticlePage() {
       {related.length > 0 && (
         <section className="py-16 bg-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-navy mb-8">Articles liés</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-navy mb-8">Articles similaires</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {related.map((a: Article) => (
                 <Link key={a.slug} to="/actualites/$slug" params={{ slug: a.slug }}
