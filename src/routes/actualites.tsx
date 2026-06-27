@@ -143,5 +143,3 @@ function ActualitesPage() {
     </SiteLayout>
   );
 }
-// African professional / family / business imagery (Unsplash)
-export const HERO_IMG = "../src/assets/img/hero/hero.png"; // placeholder, replace with brand hero image
