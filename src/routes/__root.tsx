@@ -94,6 +94,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#0B1C3D" },
+      { name: "apple-mobile-web-app-title", content: "Direct Insurance" },
+      { name: "application-name", content: "Direct Insurance" },
       { title: "DIRECT INSURANCE SA | Courtier d'Assurance au Cameroun depuis 1996" },
       { name: "description", content: "DIRECT INSURANCE SA — votre courtier-conseil agréé au Cameroun. Assurance IARDT, Maladie, Personnes & Gestion des Risques. Devis gratuit. Agrément MINFI N°03/038/CF/A." },
       { property: "og:title", content: "DIRECT INSURANCE SA | Courtier d'Assurance au Cameroun" },
@@ -104,6 +106,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/logo.png" },
+      { rel: "apple-touch-icon", href: "/logo.png" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

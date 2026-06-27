@@ -1,0 +1,244 @@
+favicon is logo.png logo implement it and make it fonctional local an for deploy /// et aussi on la page de blog nome actualite mais les article d blong narive as a etre lu lordque lon clique pour lire rl change vraiment mais on reste usur la mm page or je veux que se soit foctionell pour chaque article et fonctionnel mm si cas juste front et ona deja les donne jason  ... ensuite . la barneirer pour anonce des 30 ans a la fermerure elle diparais et la div et le composans aussi cela gene la dipo de la nava bar lorsque lon la ferme ou allon elle nes pas fermable et elle disparaitra l momen venue on ajoute une timer genre lorsque l'on actualise la page 2s plus tar une alert fukll page apparait gere une pub pour ca et on suppr cette aler qui derage ma navbar et aussi au repo pas de fon blanc le texte est adapter lisible  .... et aussi comment optimiser afin ques les images charge vite s tres vite et le site aussi ??? traduti mon rencentis en prompt
+
+
+# Direct Insurance – Final Functional Improvements & Production Optimization
+
+You are a Senior React, TanStack Start, Vite and Frontend Performance Engineer.
+
+Your mission is to review, improve and finalize the Direct Insurance website while preserving the current architecture and design system. Implement the following changes using clean, maintainable and production-ready code.
+
+---
+
+# 1. Favicon Implementation
+
+The official company logo is **logo.png**.
+
+Configure it as the application's favicon.
+
+Requirements:
+
+* Replace the default Vite favicon.
+* Use the company logo for:
+
+  * browser tab
+  * favicon
+  * Apple Touch Icon
+  * PWA metadata (if applicable)
+* Ensure it works correctly:
+
+  * during local development
+  * after `npm run build`
+  * after deployment on Vercel
+* No broken favicon references.
+
+---
+
+# 2. Blog / Actualités
+
+The "Actualités" page currently displays blog cards, but clicking **"Lire l'article"** does not navigate to a dedicated article page. The content changes on the same page instead of opening a proper article.
+
+Refactor the blog system.
+
+Requirements:
+
+* Create a dedicated route for every article.
+* Use the existing JSON data as the data source.
+* Generate SEO-friendly URLs.
+
+Example:
+
+```text
+/actualites/assurance-automobile
+/actualites/protection-des-entreprises
+/actualites/conseils-assurance-sante
+```
+
+Each article page must include:
+
+* Hero image
+* Title
+* Category
+* Publication date
+* Reading time
+* Article content
+* Related articles
+* Previous / Next navigation
+* Breadcrumb
+* Share buttons (frontend only)
+
+No backend is required. Everything must work entirely on the frontend using the existing JSON data.
+
+---
+
+# 3. 30-Year Anniversary Campaign
+
+The current anniversary banner causes layout issues.
+
+When it is closed, the component disappears and the navigation shifts upward, creating an unpleasant user experience.
+
+Remove the current top banner completely.
+
+Replace it with a premium fullscreen promotional modal.
+
+Behavior:
+
+* Automatically appears **2 seconds after page load**.
+* Uses GSAP entrance animations.
+* Premium glassmorphism design.
+* Corporate visual style matching the Direct Insurance branding.
+
+Content:
+
+"Direct Insurance celebrates more than 30 years of trust, protection and innovation."
+
+Include:
+
+* Discover our history
+* Contact an advisor
+* Learn more
+
+The modal must:
+
+* close with the close button
+* close with the ESC key
+* close by clicking outside
+
+Use **sessionStorage** or **localStorage** so that:
+
+* once closed, it does not appear again during the current browsing session;
+* it appears again when a new browser session starts.
+
+The navigation must never move or reserve empty space.
+
+---
+
+# 4. Navigation Improvements
+
+Improve the header behavior.
+
+Initial state:
+
+* transparent navigation
+* text must remain perfectly readable over the hero section
+* use adaptive colors depending on the background
+* add subtle text shadow if necessary
+
+On scroll:
+
+* navbar becomes white
+* navigation text becomes navy blue
+* smooth transition
+* blur backdrop
+* soft shadow
+* no flickering
+
+Ensure excellent readability in every state.
+
+---
+
+# 5. Image & Asset Optimization
+
+Optimize all images and media.
+
+Requirements:
+
+* Convert images to WebP or AVIF whenever possible.
+* Compress oversized images.
+* Generate responsive image sizes.
+* Lazy-load all non-critical images.
+* Preload the hero image.
+* Remove duplicate assets.
+* Eliminate unused images.
+* Implement centralized asset management.
+* Ensure all assets work identically:
+
+  * locally
+  * in preview
+  * after build
+  * after Vercel deployment
+
+Never reference assets using `/src/...` URLs.
+
+---
+
+# 6. Website Performance
+
+Optimize the application for speed.
+
+Target Lighthouse score:
+
+95+
+
+Implement:
+
+* code splitting
+* route-based lazy loading
+* dynamic imports
+* tree shaking
+* font preloading
+* font-display: swap
+* preconnect to external resources
+* optimized caching
+* preload critical assets
+* defer non-critical JavaScript
+* remove unused dependencies
+* reduce layout shifts (CLS)
+* optimize Largest Contentful Paint (LCP)
+* optimize First Contentful Paint (FCP)
+
+The website should feel almost instant on desktop and mobile.
+
+---
+
+# 7. Responsive & UX Improvements
+
+Review every page.
+
+Fix:
+
+* spacing inconsistencies
+* typography issues
+* alignment problems
+* mobile responsiveness
+* tablet layouts
+* oversized sections
+* visual hierarchy
+
+Ensure a premium experience across all devices.
+
+---
+
+# 8. Code Quality Audit
+
+Perform a complete project audit.
+
+Fix:
+
+* broken links
+* TypeScript errors
+* console warnings
+* duplicate components
+* dead code
+* unused imports
+* inconsistent naming
+* accessibility issues
+* missing translations
+* missing alt attributes
+
+Keep the codebase clean, scalable and production-ready.
+
+---
+
+# Final Objective
+
+Deliver a polished, enterprise-grade insurance website comparable to Allianz, AXA or AON.
+
+The final application must:
+
+* work flawlessly in local development;
+* build successfully without warnings;
+* deploy correctly on Vercel;
+* contain no broken images or routes;
+* provide a smooth, intuitive and professional user experience;
+* achieve excellent performance, accessibility and SEO scores;
+* follow React, TanStack Start and Vite best practices.

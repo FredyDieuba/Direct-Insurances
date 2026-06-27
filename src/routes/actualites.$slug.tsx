@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Clock, User, Calendar, MessageCircle, Share2, Linkedin, Copy, ArrowRight } from "lucide-react";
+import { ArrowLeft, Clock, User, Calendar, MessageCircle, Share2, Linkedin, Copy, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Article } from "@/data/articles";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ARTICLES } from "@/data/articles";
@@ -52,11 +52,22 @@ export const Route = createFileRoute("/actualites/$slug")({
 function ArticlePage() {
   const { article, related } = Route.useLoaderData();
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const index = ARTICLES.findIndex((item) => item.slug === article.slug);
+  const previous = index > 0 ? ARTICLES[index - 1] : null;
+  const next = index >= 0 && index < ARTICLES.length - 1 ? ARTICLES[index + 1] : null;
 
   return (
     <SiteLayout>
       <article className="pt-8 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <nav aria-label="Fil d'Ariane" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-primary transition-colors">Accueil</Link>
+            <span>/</span>
+            <Link to="/actualites" className="hover:text-primary transition-colors">Actualités</Link>
+            <span>/</span>
+            <span className="text-foreground">{article.title}</span>
+          </nav>
+
           <Link to="/actualites" className="inline-flex items-center gap-1 text-sm text-primary hover:underline mb-6">
             <ArrowLeft className="h-4 w-4" /> Retour aux articles
           </Link>
@@ -110,6 +121,39 @@ function ArticlePage() {
           </div>
         </div>
       </article>
+
+      <section className="border-t border-border bg-background py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-4 md:grid-cols-2">
+            {previous ? (
+              <Link to="/actualites/$slug" params={{ slug: previous.slug }} className="group flex items-center justify-between rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-elegant">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <ChevronLeft className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Article précédent</div>
+                    <div className="font-semibold text-navy">{previous.title}</div>
+                  </div>
+                </div>
+              </Link>
+            ) : <div />}
+            {next ? (
+              <Link to="/actualites/$slug" params={{ slug: next.slug }} className="group flex items-center justify-between rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-elegant">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <ChevronRight className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Article suivant</div>
+                    <div className="font-semibold text-navy">{next.title}</div>
+                  </div>
+                </div>
+              </Link>
+            ) : <div />}
+          </div>
+        </div>
+      </section>
 
       {related.length > 0 && (
         <section className="py-16 bg-muted">

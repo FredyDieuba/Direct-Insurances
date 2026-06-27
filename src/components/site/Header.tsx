@@ -17,35 +17,20 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [prodOpen, setProdOpen] = useState(false);
 
-  const [bannerVisible, setBannerVisible] = useState(true);
-
   useEffect(() => {
-    try {
-      setBannerVisible(localStorage.getItem("di_banner_30ans_dismissed") !== "1");
-    } catch {
-      setBannerVisible(true);
-    }
-
-    const onDismiss = () => setBannerVisible(false);
-    window.addEventListener("banner_dismissed", onDismiss);
-
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("banner_dismissed", onDismiss);
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Transparent over hero → solid white with navy text on scroll
   const headerBg = scrolled
-    ? "bg-white/95 backdrop-blur-md shadow-card-soft border-b border-border"
+    ? "bg-white/85 backdrop-blur-xl shadow-[0_8px_30px_rgba(11,28,61,0.08)] border-b border-slate-200/80"
     : "bg-transparent";
   const navTone = scrolled
-    ? "text-navy hover:text-primary"
+    ? "text-slate-800 hover:text-primary"
     : "text-white hover:text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)]";
-  const brandTone = scrolled ? "text-navy" : "text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]";
+  const brandTone = scrolled ? "text-slate-900" : "text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]";
 
   const links = [
     { to: "/", label: t("nav.home") },
@@ -57,10 +42,10 @@ export function Header() {
   ] as const;
 
   return (
-    <header className={`fixed ${bannerVisible ? "top-11" : "top-0"} inset-x-0 z-40 transition duration-300 ${headerBg}`}>
+    <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out ${headerBg}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group" aria-label="Direct Insurance — Accueil">
-          <div className="h-11 w-11 rounded-xl bg-white shadow-card-soft flex items-center justify-center">
+          <div className={`h-11 w-11 rounded-xl ${scrolled ? "bg-slate-100" : "bg-white/95"} shadow-card-soft flex items-center justify-center`}>
             <img src={logoUrl} alt="Logo Direct Insurance" className="h-9 w-9 object-contain" />
           </div>
           <span className={`font-display font-bold text-base md:text-lg tracking-tight transition-colors ${brandTone}`}>

@@ -21,7 +21,10 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Courtier-conseil agréé au Cameroun depuis 1996. IARDT, Maladie, Personnes, Gestion des Risques." },
       { property: "og:url", content: "https://direct-assurance.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "https://direct-assurance.lovable.app/" }],
+    links: [
+      { rel: "canonical", href: "https://direct-assurance.lovable.app/" },
+      { rel: "preload", href: HERO_IMG, as: "image" },
+    ],
   }),
   component: HomePage,
 });
